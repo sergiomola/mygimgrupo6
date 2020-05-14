@@ -1,4 +1,5 @@
 com\mygim\entities\GruposUsuario_.class
+com\mygim\reserva\reserva.class
 com\mygim\entities\GruposUsuario.class
 com\mygim\entities\Usuarios_.class
 com\mygim\rest\ApplicationConfig.class

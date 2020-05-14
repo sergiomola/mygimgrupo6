@@ -19,12 +19,14 @@
             <h1><h:outputText value="Gimnasio Mygim"/></h1>
         </p:layoutUnit>
         <p:layoutUnit position="west" size="175" header="Left" collapsible="true">
-            <p:menu>
-                <p:submenu label="Menú">
-                    <p:menuitem value="Inicio" outcome="/index.xhtml" icon="ui-icon-home" />
-                    <p:menuitem value="Actividades" outcome="/actividades.xhtml" icon="ui-icon-home" />
-                </p:submenu>
-            </p:menu>
+            <h:form>
+                <p:menu>
+                        <p:menuitem value="Inicio" outcome="/index.xhtml" icon="ui-icon-home" />
+                        <p:menuitem value="Actividades" outcome="/actividades.xhtml"/>
+                        <p:menuitem value="Reservar" action="reserva"/>
+                        <p:menuitem value="Reservar2" outcome="/reserva/reserva.xhtml"/>
+                </p:menu>
+            </h:form>
         </p:layoutUnit> 
         <p:layoutUnit position="center" size="175" >
             <ui:insert name="content">Content</ui:insert>

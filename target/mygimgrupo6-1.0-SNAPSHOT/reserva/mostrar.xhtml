@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../template.xhtml">
+
+            <ui:define name="content">
+                <c:choose>
+                    <c:when test="#{reserva.disonibles == 0}">
+                        <h2>En esta actividad no hay plazas disponibles, sentimos las molestias</h2>
+                        Por favor vuelva a la página anterior si desea reservar otra actividad.
+                            <p:commandButton id="back" value="Atrás" action="showtimes" icon="ui-iconarrowrefresh-1-w"/>
+                    </c:when>
+                    <c:otherwise>
+                        <h2>¿Confirmar?</h2>
+                        <h:form>
+                            Actividad: #{reserva.nombre}<p/>
+                            Fecha: #{reserva.fecha}<p/>
+                            Hora: #{reserva.hora}<p/>
+                            Plazas disponibles: #{reserva.disponibles}<p/>
+                            Precio: #{reserva.precio}€<p/>
+                            <p/><p:commandButton id="next" value="Comprar" action="compra"/>
+                            <p:commandButton id="back" value="Atrás" action="reserva" icon="ui-iconarrowrefresh-1-w"/>
+                        </h:form>
+                    </c:otherwise>
+                </c:choose>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
