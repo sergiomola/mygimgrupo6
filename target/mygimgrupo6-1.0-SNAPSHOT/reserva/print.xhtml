@@ -33,7 +33,7 @@
                         </p:panelGrid>
                         <p:panelGrid columns="2">
                             <h:outputText value="Código QR con tu entrada:" />
-                            <p:barcode value="Aquí está tu entrada #{reserva.nombre}" type="qr"/>
+                            <p:barcode value="Aquí está tu entrada para #{reserva.actividadId}" type="qr"/>
                         </p:panelGrid>
                     </p:panelGrid>
                     <p:commandButton id="home" value="Inicio" action="goHome" icon="ui-icon-home"/>

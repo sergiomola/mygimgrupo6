@@ -12,7 +12,7 @@
 
             <ui:define name="content">
                 <c:choose>
-                    <c:when test="#{reserva.disonibles == 0}">
+                    <c:when test="#{reserva.disponibles == 0}">
                         <h2>En esta actividad no hay plazas disponibles, sentimos las molestias</h2>
                         Por favor vuelva a la página anterior si desea reservar otra actividad.
                             <p:commandButton id="back" value="Atrás" action="showtimes" icon="ui-iconarrowrefresh-1-w"/>

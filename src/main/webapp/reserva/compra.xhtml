@@ -11,18 +11,22 @@
 
             <ui:define name="content">
                 <h2><h:outputText value="Introduzca informacion del pago"/></h2>
-                <h:form prependId="false">
+                <h:form>
+                    
                     <h:panelGrid columns="3" id="grid">
-                        <p:outputLabel for=”precio" value=”Precio"/>
-                        <h:outputText value="#{reserva.precio}€"
-                        <p:message for="precio" style="color:blue"/>
+                        
+                        <h:outputText value="Precio:"/>
+                        <h:outputText value="#{reserva.precio}€"/>
+                        <h:outputText value=""/>
+                        
                         <p:outputLabel for="tarjeta" value="Tarjeta de credito"/>
                         <p:inputMask id="tarjeta" value="#{reserva.tarjeta}" mask="9999-9999-9999-9999" required="true"/>
                         <p:message for="tarjeta"/>
+                        
                         <p:outputLabel for="fecha" value="Fecha de expiracion (mes/año)"/>
-                        <p:datePicker id="fecha" view="month" value="#{reserva.fecha}" pattern="MM/yyyy" locale="es"
-                                      yearNavigator="true" yearRange="2020:2030" />
+                        <p:datePicker id="fecha" view="month" value="#{reserva.caducidad}" pattern="MM/yyyy" yearNavigator="true" locale="es" yearRange="2020:2030"  required="true"/>
                         <p:message for="fecha"/>
+                        
                     </h:panelGrid>
                     <p/><p:commandButton id="next" value="Confirmar" action="print" update="grid"/>
                     <p:commandButton id="back" value="Atrás" action="mostrar" icon="ui-icon-arrowrefresh-1-w"

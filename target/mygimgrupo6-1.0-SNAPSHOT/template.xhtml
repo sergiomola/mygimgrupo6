@@ -11,26 +11,26 @@
         <link href="${facesContext.externalContext.requestContextPath}/resources/css/cssLayout.css" rel="stylesheet" type="text/css" />
         <title>Facelets Template</title>
     </h:head>
+    <h:body>
+        <p:layout fullPage="true">
 
-    <p:layout fullPage="true">
 
-
-        <p:layoutUnit position="north" size="50" resizable="true" closable="true" collapsible="true">
-            <h1><h:outputText value="Gimnasio Mygim"/></h1>
-        </p:layoutUnit>
-        <p:layoutUnit position="west" size="175" header="Left" collapsible="true">
-            <h:form>
-                <p:menu>
+            <p:layoutUnit position="north" size="50" resizable="true" closable="true" collapsible="true">
+                <h1><h:outputText value="Gimnasio Mygim"/></h1>
+            </p:layoutUnit>
+            <p:layoutUnit position="west" size="175" header="Left" collapsible="true">
+                <h:form>
+                    <p:menu>
                         <p:menuitem value="Inicio" outcome="/index.xhtml" icon="ui-icon-home" />
                         <p:menuitem value="Actividades" outcome="/actividades.xhtml"/>
-                        <p:menuitem value="Reservar" action="reserva"/>
-                        <p:menuitem value="Reservar2" outcome="/reserva/reserva.xhtml"/>
-                </p:menu>
-            </h:form>
-        </p:layoutUnit> 
-        <p:layoutUnit position="center" size="175" >
-            <ui:insert name="content">Content</ui:insert>
-        </p:layoutUnit>
-    </p:layout>
-
+                        <p:menuitem value="Reserva" action="reserva"/>
+                        <p:menuitem value="Reservar2" action="reservar"/>
+                    </p:menu>
+                </h:form>
+            </p:layoutUnit> 
+            <p:layoutUnit position="center" size="175" >
+                <ui:insert name="content">Content</ui:insert>
+            </p:layoutUnit>
+        </p:layout>
+    </h:body>
 </html>
