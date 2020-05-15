@@ -6,6 +6,7 @@
 package com.mygim.client;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
@@ -26,18 +27,18 @@ public class ActividadesBackingBean implements Serializable{
     public void setActividadesNombre(String actividadesNombre) {
         this.actividadesNombre = actividadesNombre;
     }
-    String actividadesFecha;
+    Date actividadesFecha;
     String actividadesHora;
     int actividadesPrecio;
     String actividadesDescripcion;
     int actividadesDisponibles;
     String actividadesSala;
 
-    public String getActividadesFecha() {
+    public Date getActividadesFecha() {
         return actividadesFecha;
     }
 
-    public void setActividadesFecha(String actividadesFecha) {
+    public void setActividadesFecha(Date actividadesFecha) {
         this.actividadesFecha = actividadesFecha;
     }
 

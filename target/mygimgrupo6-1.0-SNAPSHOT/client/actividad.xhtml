@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <body>
 
@@ -11,31 +12,40 @@
 
             <ui:define name="content">
                 <h:form>
-                    <h2><h:outputText value="Información de la película
-                                      #{actividadesClientBean.actividad.nombre}"/></h2>
-                    <p:panelGrid id="info" columns="2">
-                        <h:outputText value="Identificador de la actividad: "/>
-                        <h:outputText value="#{actividadesClientBean.actividad.id}"/>
-                        <h:outputText value="Título: "/>
-                        <h:outputText value="#{actividadesClientBean.actividad.nombre}"/>
-                        <h:outputText value="Actores: "/>
-                        <h:outputText value="#{actividadesClientBean.actividad.fecha}"/>
-                        <h:outputText value="Hora:"/>
-                        <h:outputText value="#{actividadesClientBean.actividad.hora}"/>
-                        <h:outputText value="Aula:"/>
-                        <h:outputText value="#{actividadesClientBean.actividad.sala}"/>
-                        <h:outputText value="Precio: "/>
-                        <h:outputText value="#{actividadesClientBean.actividad.precio}"/>
-                        <h:outputText value="Plazas disponibles: "/>
-                        <h:outputText value="#{actividadesClientBean.actividad.disponibles}"/>
-                        <h:outputText value="Descripción completa: "/>
-                        <h:outputText value="#{actividadesClientBean.actividad.descripcion}"/>
-                    </p:panelGrid>
-                    <p:commandButton value="Back" action="manage" icon="ui-icon-arrowrefresh-1-w"/>
-                    <p:commandButton
-                        value="Borrar"
-                        action="manage"
-                        actionListener="#{actividadesClientBean.deleteActividades()}"/>
+                    <c:choose>
+                        <c:when test="#{empty actividadesClientBean.actividad.id}">
+                            <h2>La actividad seleccionada no está disponible</h2>
+                            Por favor vuelva a la página anterior si desea consultar otra actividad.
+                            <p:commandButton value="Back" action="manage" icon="ui-icon-arrowrefresh-1-w"/>
+                        </c:when>
+                        <c:otherwise>
+                            <h2><h:outputText value="Información de la actividad
+                                              #{actividadesClientBean.actividad.nombre}"/></h2>
+                            <p:panelGrid id="info" columns="2">
+                                <h:outputText value="Identificador de la actividad: "/>
+                                <h:outputText value="#{actividadesClientBean.actividad.id}"/>
+                                <h:outputText value="Título: "/>
+                                <h:outputText value="#{actividadesClientBean.actividad.nombre}"/>
+                                <h:outputText value="Actores: "/>
+                                <h:outputText value="#{actividadesClientBean.actividad.fecha}"/>
+                                <h:outputText value="Hora:"/>
+                                <h:outputText value="#{actividadesClientBean.actividad.hora}"/>
+                                <h:outputText value="Aula:"/>
+                                <h:outputText value="#{actividadesClientBean.actividad.sala}"/>
+                                <h:outputText value="Precio: "/>
+                                <h:outputText value="#{actividadesClientBean.actividad.precio}"/>
+                                <h:outputText value="Plazas disponibles: "/>
+                                <h:outputText value="#{actividadesClientBean.actividad.disponibles}"/>
+                                <h:outputText value="Descripción completa: "/>
+                                <h:outputText value="#{actividadesClientBean.actividad.descripcion}"/>
+                            </p:panelGrid>
+                            <p:commandButton value="Back" action="manage" icon="ui-icon-arrowrefresh-1-w"/>
+                            <p:commandButton
+                                value="Borrar"
+                                action="manage"
+                                actionListener="#{actividadesClientBean.deleteActividades()}"/>
+                        </c:otherwise>
+                    </c:choose>
                 </h:form>
             </ui:define>
 

@@ -8,6 +8,8 @@ package com.mygim.client;
 import com.mygim.entities.Actividades;
 import com.mygim.json.ActividadesReader;
 import com.mygim.json.ActividadesWriter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.enterprise.context.RequestScoped;
@@ -62,12 +64,13 @@ public class ActividadesClientBean {
                 .delete();
     }
 
-    public void addMovie() {
+    public void addActividad() {
         Actividades m = new Actividades();
-        m.setId(3);
+        DateFormat d=new SimpleDateFormat("dd/mm/yyyy");
+        m.setId(1);
         m.setNombre(bean.getActividadesNombre());
         m.setSala(bean.getActividadesSala());
-        m.setFecha(bean.getActividadesFecha());
+        m.setFecha(d.format(bean.getActividadesFecha()));
         m.setHora(bean.getActividadesHora());
         m.setPrecio(bean.getActividadesPrecio());
         m.setDisponibles(bean.getActividadesDisponibles());

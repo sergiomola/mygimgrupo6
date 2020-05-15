@@ -45,6 +45,7 @@ public class ActividadesWriter implements MessageBodyWriter<Actividades> {
                 .write("precio", t.getPrecio())
                 .write("disponibles", t.getDisponibles())
                 .write("descripcion", t.getDescripcion())
+                .write("creadapor", t.getCreadaPor())
                 .writeEnd();
         gen.flush();
     }

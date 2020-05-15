@@ -62,7 +62,9 @@ public class ActividadesReader implements MessageBodyReader<Actividades> {
                         case "descripcion":
                             actividad.setDescripcion(parser.getString());
                             break;
-
+                        case "creadapor":
+                            actividad.setCreadaPor(parser.getString());
+                            break;
                         default:
                             break;
                     }
