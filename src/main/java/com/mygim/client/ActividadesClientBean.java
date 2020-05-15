@@ -64,7 +64,7 @@ public class ActividadesClientBean {
 
     public void addMovie() {
         Actividades m = new Actividades();
-        m.setId(1);
+        m.setId(3);
         m.setNombre(bean.getActividadesNombre());
         m.setSala(bean.getActividadesSala());
         m.setFecha(bean.getActividadesFecha());

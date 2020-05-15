@@ -13,12 +13,12 @@
 
             <ui:define name="content">
                 <h:form>
-                    <h:selectOneRadio value="#{actividadesBackingBean.actividadesId}"
+                    <p:selectOneRadio value="#{actividadesBackingBean.actividadesId}"
                                       layout="pageDirection">
                         <c:forEach items="#{actividadesClientBean.actividades}" var="m">
                             <f:selectItem itemValue="#{m.id}" itemLabel="#{m.nombre}"/>
                         </c:forEach>
-                    </h:selectOneRadio>
+                    </p:selectOneRadio>
                     <p:commandButton value="Detalles" action="actividad" />
                     <p:commandButton value="Añadir Actividad" action="nuevaActividad" />
                 </h:form>
