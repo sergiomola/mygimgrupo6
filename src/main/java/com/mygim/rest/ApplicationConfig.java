@@ -29,6 +29,8 @@ public class ApplicationConfig extends Application {
      * If required, comment out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
+        resources.add(com.mygim.json.ActividadesReader.class);
+        resources.add(com.mygim.json.ActividadesWriter.class);
         resources.add(com.mygim.rest.ActividadesFacadeREST.class);
     }
     

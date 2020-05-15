@@ -17,6 +17,69 @@ import javax.inject.Named;
 @SessionScoped
 public class ActividadesBackingBean implements Serializable{
     int actividadesId;
+    String actividadesNombre;
+
+    public String getActividadesNombre() {
+        return actividadesNombre;
+    }
+
+    public void setActividadesNombre(String actividadesNombre) {
+        this.actividadesNombre = actividadesNombre;
+    }
+    String actividadesFecha;
+    String actividadesHora;
+    int actividadesPrecio;
+    String actividadesDescripcion;
+    int actividadesDisponibles;
+    String actividadesSala;
+
+    public String getActividadesFecha() {
+        return actividadesFecha;
+    }
+
+    public void setActividadesFecha(String actividadesFecha) {
+        this.actividadesFecha = actividadesFecha;
+    }
+
+    public String getActividadesHora() {
+        return actividadesHora;
+    }
+
+    public void setActividadesHora(String actividadesHora) {
+        this.actividadesHora = actividadesHora;
+    }
+
+    public int getActividadesPrecio() {
+        return actividadesPrecio;
+    }
+
+    public void setActividadesPrecio(int actividadesPrecio) {
+        this.actividadesPrecio = actividadesPrecio;
+    }
+
+    public String getActividadesDescripcion() {
+        return actividadesDescripcion;
+    }
+
+    public void setActividadesDescripcion(String actividadesDescripcion) {
+        this.actividadesDescripcion = actividadesDescripcion;
+    }
+
+    public int getActividadesDisponibles() {
+        return actividadesDisponibles;
+    }
+
+    public void setActividadesDisponibles(int actividadesDisponibles) {
+        this.actividadesDisponibles = actividadesDisponibles;
+    }
+
+    public String getActividadesSala() {
+        return actividadesSala;
+    }
+
+    public void setActividadesSala(String actividadesSala) {
+        this.actividadesSala = actividadesSala;
+    }
 
     public int getActividadesId() {
         return actividadesId;

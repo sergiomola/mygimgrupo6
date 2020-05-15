@@ -6,6 +6,8 @@
 package com.mygim.client;
 
 import com.mygim.entities.Actividades;
+import com.mygim.json.ActividadesReader;
+import com.mygim.json.ActividadesWriter;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.enterprise.context.RequestScoped;
@@ -13,7 +15,9 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.MediaType;
 
 @Named
 @RequestScoped
@@ -43,12 +47,12 @@ public class ActividadesClientBean {
     }
 
     public Actividades getActividad() {
-        Actividades m = target
-                .path("{actividadesId}")
-                .resolveTemplate("actividadesId", bean.getActividadesId())
-                .request()
+        return target
+                .register(ActividadesReader.class)
+                .path("{ActividadesId}")
+                .resolveTemplate("ActividadesId", bean.getActividadesId())
+                .request(MediaType.APPLICATION_JSON)
                 .get(Actividades.class);
-        return m;
     }
 
     public void deleteActividades() {
@@ -56,5 +60,21 @@ public class ActividadesClientBean {
                 .resolveTemplate("actividadesId", bean.getActividadesId())
                 .request()
                 .delete();
+    }
+
+    public void addMovie() {
+        Actividades m = new Actividades();
+        m.setId(1);
+        m.setNombre(bean.getActividadesNombre());
+        m.setSala(bean.getActividadesSala());
+        m.setFecha(bean.getActividadesFecha());
+        m.setHora(bean.getActividadesHora());
+        m.setPrecio(bean.getActividadesPrecio());
+        m.setDisponibles(bean.getActividadesDisponibles());
+        m.setDescripcion(bean.getActividadesDescripcion());
+        m.setCreadaPor("No implementado");
+        target.register(ActividadesWriter.class)
+                .request()
+                .post(Entity.entity(m, MediaType.APPLICATION_JSON));
     }
 }
