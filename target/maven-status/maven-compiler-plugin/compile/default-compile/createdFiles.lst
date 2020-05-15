@@ -1,10 +1,12 @@
+com\mygim\client\ActividadesBackingBean.class
 com\mygim\entities\GruposUsuario_.class
-com\mygim\reserva\Reserva.class
 com\mygim\entities\GruposUsuario.class
-com\mygim\entities\Usuarios_.class
 com\mygim\rest\ApplicationConfig.class
 com\mygim\entities\Actividades_.class
-com\mygim\entities\Usuarios.class
 com\mygim\entities\Actividades.class
-com\mygim\rest\AbstractFacade.class
 com\mygim\rest\ActividadesFacadeREST.class
+com\mygim\client\ActividadesClientBean.class
+com\mygim\reserva\Reserva.class
+com\mygim\entities\Usuarios_.class
+com\mygim\entities\Usuarios.class
+com\mygim\rest\AbstractFacade.class

@@ -14,7 +14,7 @@
             <ui:define name="content">
                 <h1><h:outputText value="Elige la actividad"/></h1>
                 <h:form>
-                    <p:selectOneRadio id="customRadio"  layout="custom" value="#{reserva.actividadId}">
+                    <p:selectOneRadio id="customRadio"  layout="custom" value="#{reserva.actividadId}" required="true">
                         <f:selectItems value="#{actividadesFacadeREST.findAll()}" var="a"
                                        itemValue="#{a.id}"
                                        itemLabel="#{a.nombre}"/>
@@ -36,6 +36,7 @@
                     </h:panelGrid>
 
                     <p:commandButton id="shows" value="Proceder con la compra" action="mostrar"/>
+                    <p:message for="customRadio"/>
                 </h:form>
             </ui:define>
         </ui:composition>

@@ -98,4 +98,13 @@ public class Reserva implements Serializable {
             return 0;
         }
     }
+    
+    public String getSala() {
+        try {
+            List<Actividades> list = em.createNamedQuery("Actividades.findById", Actividades.class).setParameter("id", actividadId).getResultList();
+            return list.get(0).getSala();
+        } catch (NoResultException e) {
+            return "none";
+        }
+    }
 }

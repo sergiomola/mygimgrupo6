@@ -14,8 +14,9 @@
                 <h2><h:outputText value="Reserva confirmada!!!"/></h2>
                 <h:form>
                     <p:panelGrid id="print" columns ="1">
-                        <p:panelGrid id="info" columns="3">
+                        <p:panelGrid id="info" columns="2">
                             <h:outputText value="Actividad: #{reserva.nombre}"/>
+                            <h:outputText value="Sala: #{reserva.sala}"/>
                             <h:outputText value="Fecha: #{reserva.fecha}"/>
                             <h:outputText value="Hora: #{reserva.hora}"/>
                         </p:panelGrid>
