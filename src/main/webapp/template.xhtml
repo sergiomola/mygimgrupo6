@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -22,15 +23,38 @@
                 <h:form>
                     <p:menu>
                         <p:menuitem value="Inicio" outcome="/index.xhtml" icon="ui-icon-home" />
+                        <p:menuitem value="Iniciar Sesión" outcome="/login.xhtml" rendered="#{request.isUserInRole('usuarios')==false or request.isUserInRole('entrenadores')==false}" icon="ui-icon-key"/>
+                        <p:menuitem value="Registrarse" outcome="/registro.xhtml" rendered="#{request.isUserInRole('usuarios')==false or request.isUserInRole('entrenadores')==false}" icon="ui-icon-pencil"/>
                         <p:menuitem value="Actividades" outcome="/actividades.xhtml"/>
                         <p:menuitem value="Reserva" action="reserva"/>
                         <p:menuitem value="Gestionar Actividades" outcome="/client/manage.xhtml"/>
                         <p:menuitem value="Sala de Chat" outcome="/chat/chatroom.xhtml"/>
+                        
                     </p:menu>
                 </h:form>
             </p:layoutUnit> 
             <p:layoutUnit position="center" size="175" >
                 <ui:insert name="content">Content</ui:insert>
+            </p:layoutUnit>
+            <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true" >
+                <h2><h:outputText value="Aplicación Gimnasio Mygim - Valladolid"/></h2>
+                <h:form>
+                    <p:toolbar rendered="#{request.isUserInRole('usuarios') or request.isUserInRole('entrenadores')}">
+                        <f:facet name="left">
+                            <p:commandButton type="button" value="New" icon="ui-icon-document"/>
+                            <p:commandButton type="button" value="Open" icon="ui-icon-folder-open" />
+                            <span class="ui-separator">
+                                <span class="ui-icon ui-icon-grip-dotted-vertical" />
+                            </span>
+                            <p:commandButton type="button" title="Save" icon="ui-icon-disk" />
+                        </f:facet>
+                        <f:facet name="right">
+                            <p:menuButton value="#{loginView.authenticatedUser.nombre}">
+                                <p:menuitem value="Cerrar sesión" action="#{loginView.logout}" icon="ui-icon-power" />
+                            </p:menuButton>
+                        </f:facet>
+                    </p:toolbar>
+                </h:form>
             </p:layoutUnit>
         </p:layout>
     </h:body>
