@@ -167,6 +167,11 @@ public class RegisterView implements Serializable {
     public Date getFecha() {
         return fecha;
     }
+    
+    public String getFechaFormato(){
+        DateFormat d = new SimpleDateFormat("dd/MM/yyyy");
+        return d.format(fecha);
+    }
 
     public void setFecha(Date fecha) {
         this.fecha = fecha;
