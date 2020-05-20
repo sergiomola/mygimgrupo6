@@ -27,7 +27,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "GruposUsuario.findAll", query = "SELECT g FROM GruposUsuario g")
     , @NamedQuery(name = "GruposUsuario.findByEmail", query = "SELECT g FROM GruposUsuario g WHERE g.email = :email")
-    , @NamedQuery(name = "GruposUsuario.findByNombregrupo", query = "SELECT g FROM GruposUsuario g WHERE g.nombregrupo = :nombregrupo")})
+    , @NamedQuery(name = "GruposUsuario.findByNombregrupo", query = "SELECT g FROM GruposUsuario g WHERE g.nombregrupo = :nombregrupo")
+    , @NamedQuery(name = "GruposUsuario.emailsByNombregrupo", query = "SELECT g.email FROM GruposUsuario g WHERE g.nombregrupo = :nombregrupo")})
 public class GruposUsuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -96,5 +97,5 @@ public class GruposUsuario implements Serializable {
     public String toString() {
         return "com.mygim.entities.GruposUsuario[ email=" + email + " ]";
     }
-    
+
 }

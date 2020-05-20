@@ -10,6 +10,7 @@ import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Logger;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
@@ -69,19 +70,42 @@ public class RegisterView implements Serializable {
     }
 
     public String register() {
-        DateFormat d=new SimpleDateFormat("dd/MM/yyyy");
-        Usuarios user = new Usuarios(email, password, nombre, apellidos, telefono, d.format(fecha), telefono);
+        DateFormat d = new SimpleDateFormat("dd/MM/yyyy");
+        Usuarios user = new Usuarios(email, password, nombre, apellidos, dni, d.format(fecha), telefono);
         userEJB.createUser(user);
         log.info("Nuevo usuario creado con e-mail: " + email + " y nombre: " + nombre);
         return "regok";
     }
-    
+
     public String registerEntrenador() {
-        DateFormat d=new SimpleDateFormat("dd/MM/yyyy");
-        Usuarios user = new Usuarios(email, password, nombre, apellidos, telefono, d.format(fecha), telefono);
+        DateFormat d = new SimpleDateFormat("dd/MM/yyyy");
+        Usuarios user = new Usuarios(email, password, nombre, apellidos, dni, d.format(fecha), telefono);
         userEJB.createEntrenador(user);
         log.info("Nuevo usuario creado con e-mail: " + email + " y nombre: " + nombre);
         return "regokentrenador";
+    }
+
+    public String ponerInfo() {
+        Usuarios user = userEJB.findByEmail(email);
+        nombre = user.getNombre();
+        apellidos = user.getApellidos();
+        email = user.getEmail();
+        dni = user.getDni();
+        telefono = user.getTelefono();
+        try {
+            fecha = new SimpleDateFormat("dd/MM/yyyy").parse(user.getNacimiento());
+        } catch (Exception e) {
+        }
+        return "entrenador";
+    }
+
+    public String borrarUsuario(){
+        userEJB.deleteUser(email);
+        return "gestionarEntrenadores";
+    }
+    
+    public List<Usuarios> getEntrenadores() {
+        return userEJB.findAllEntrenadores();
     }
 
     public String getNombre() {
@@ -148,5 +172,4 @@ public class RegisterView implements Serializable {
         this.fecha = fecha;
     }
 
-    
 }

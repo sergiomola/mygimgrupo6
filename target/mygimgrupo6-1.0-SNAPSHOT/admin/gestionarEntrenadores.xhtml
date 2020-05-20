@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <body>
+
+        <ui:composition template="./../template.xhtml">
+
+            <ui:define name="content">
+                <h1><h:outputText value="Selecciona un entrenador"/></h1>
+                <h:form>
+                    <p:selectOneRadio id="customRadio"  layout="custom" value="#{registerView.email}" required="true">
+                        <f:selectItems value="#{registerView.entrenadores}" var="a"
+                                       itemValue="#{a.email}"
+                                       itemLabel="#{a.nombre}"/>
+                    </p:selectOneRadio>
+                    <p:panelGrid columns="5"  style="width: 100%">
+                        <h:outputText value=""/>
+                        <h:outputText value="Nombre" style="font-weight: bold"/>
+                        <h:outputText value="Apellidos" style="font-weight: bold"/>
+                        <h:outputText value="DNI" style="font-weight: bold"/>
+                        <h:outputText value="Email" style="font-weight: bold"/>
+
+                        <c:forEach var="a" items="#{registerView.entrenadores}" varStatus="loop">
+                            <p:radioButton for="customRadio" itemIndex="#{loop.index}"/>
+                            <h:outputText value="#{a.nombre}"/>
+                            <h:outputText value="#{a.apellidos}"/>
+                            <h:outputText value="#{a.dni}"/>
+                            <h:outputText value="#{a.email}"/>
+                        </c:forEach>
+                    </p:panelGrid>
+
+                    <p:commandButton id="shows" value="Mas información" action="entrenador"/>
+                    <p:commandButton id="add" value="Añadir nuevo entrenador" action="registroentrenador"/>
+                    <p:message for="customRadio"/>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

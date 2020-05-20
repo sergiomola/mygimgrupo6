@@ -19,7 +19,7 @@
                                        itemValue="#{a.id}"
                                        itemLabel="#{a.nombre}"/>
                     </p:selectOneRadio>
-                    <h:panelGrid columns="5" cellpadding="5" style="width: 100%">
+                    <p:panelGrid columns="5"  style="width: 100%">
                         <h:outputText value=""/>
                         <h:outputText value="Nombre" style="font-weight: bold"/>
                         <h:outputText value="Fecha" style="font-weight: bold"/>
@@ -33,7 +33,7 @@
                             <h:outputText value="#{a.hora}"/>
                             <h:outputText value="#{a.disponibles}"/>
                         </c:forEach>
-                    </h:panelGrid>
+                    </p:panelGrid>
 
                     <p:commandButton id="shows" value="Proceder con la compra" action="mostrar"/>
                     <p:message for="customRadio"/>
