@@ -23,12 +23,13 @@
                 <h:form>
                     <p:menu>
                         <p:menuitem value="Inicio" outcome="/index.xhtml" icon="ui-icon-home" />
-                        <p:menuitem value="Iniciar Sesión" outcome="/login.xhtml" rendered="#{request.isUserInRole('usuarios')==false or request.isUserInRole('entrenadores')==false}" icon="ui-icon-key"/>
-                        <p:menuitem value="Registrarse" outcome="/registro.xhtml" rendered="#{request.isUserInRole('usuarios')==false or request.isUserInRole('entrenadores')==false}" icon="ui-icon-pencil"/>
-                        <p:menuitem value="Actividades" outcome="/actividades.xhtml"/>
-                        <p:menuitem value="Reserva" action="reserva"/>
-                        <p:menuitem value="Gestionar Actividades" outcome="/client/manage.xhtml"/>
-                        <p:menuitem value="Sala de Chat" outcome="/chat/chatroom.xhtml"/>
+                        <p:menuitem value="Iniciar Sesión" outcome="/login.xhtml" rendered="#{request.isUserInRole('usuarios')==false}" icon="ui-icon-key"/>
+                        <p:menuitem value="Registrarse" outcome="/registro.xhtml" rendered="#{request.isUserInRole('usuarios')==false}" icon="ui-icon-pencil"/>
+                        <p:menuitem value="Actividades" outcome="/actividades.xhtml" rendered="#{request.isUserInRole('clientes')}"/>
+                        <p:menuitem value="Reserva" action="reserva" rendered="#{request.isUserInRole('clientes')}"/>
+                        <p:menuitem value="Gestionar mis Actividades" outcome="/client/manage.xhtml" rendered="#{request.isUserInRole('entrenadores')}"/>
+                        <p:menuitem value="Sala de Chat" outcome="/chat/chatroom.xhtml" rendered="#{request.isUserInRole('usuarios')}"/>
+                        <p:menuitem value="Añadir nuevo entrenador" outcome="/admin/registroentrenador.xhtml" rendered="#{request.isUserInRole('admin')}"/>
                         
                     </p:menu>
                 </h:form>
@@ -39,7 +40,7 @@
             <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true" >
                 <h2><h:outputText value="Aplicación Gimnasio Mygim - Valladolid"/></h2>
                 <h:form>
-                    <p:toolbar rendered="#{request.isUserInRole('usuarios') or request.isUserInRole('entrenadores')}">
+                    <p:toolbar rendered="#{request.isUserInRole('usuarios')}">
                         <f:facet name="left">
                             <p:commandButton type="button" value="New" icon="ui-icon-document"/>
                             <p:commandButton type="button" value="Open" icon="ui-icon-folder-open" />

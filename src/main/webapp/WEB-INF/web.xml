@@ -38,6 +38,9 @@
         <role-name>usuarios</role-name>
     </security-role>
     <security-role>
+        <role-name>clientes</role-name>
+    </security-role>
+    <security-role>
         <role-name>entrenadores</role-name>
     </security-role>
     <security-role>
@@ -51,6 +54,16 @@
         </web-resource-collection>
         <auth-constraint>
             <role-name>usuarios</role-name>
+        </auth-constraint>
+    </security-constraint>
+     <security-constraint>
+        <display-name>Restringido para clientes</display-name>
+        <web-resource-collection>
+            <web-resource-name>Restricted Access</web-resource-name>
+            <url-pattern>/faces/clientes/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>clientes</role-name>
         </auth-constraint>
     </security-constraint>
     <security-constraint>

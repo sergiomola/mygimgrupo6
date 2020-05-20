@@ -30,11 +30,12 @@ public class UserEJB {
         }
         GruposUsuario group = new GruposUsuario();
         group.setEmail(user.getEmail());
-        group.setNombregrupo("usuarios");
+        group.setNombregrupo("clientes");
         em.persist(user);
         em.persist(group);
         return user;
     }
+    
 
     public Usuarios findByEmail(String email) {
         TypedQuery<Usuarios> query = em.createNamedQuery("Usuarios.findByEmail", Usuarios.class);
