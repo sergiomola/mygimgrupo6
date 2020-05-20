@@ -36,6 +36,19 @@ public class UserEJB {
         return user;
     }
     
+    public Usuarios createEntrenador(Usuarios user) {
+        try {
+            user.setPassword(AuthenticationUtils.encodeSHA256(user.getPassword()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        GruposUsuario group = new GruposUsuario();
+        group.setEmail(user.getEmail());
+        group.setNombregrupo("entrenadores");
+        em.persist(user);
+        em.persist(group);
+        return user;
+    }
 
     public Usuarios findByEmail(String email) {
         TypedQuery<Usuarios> query = em.createNamedQuery("Usuarios.findByEmail", Usuarios.class);
