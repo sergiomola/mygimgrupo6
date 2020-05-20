@@ -29,7 +29,7 @@
                         <p:menuitem value="Reserva" action="reserva" rendered="#{request.isUserInRole('clientes')}"/>
                         <p:menuitem value="Gestionar mis Actividades" outcome="/client/manage.xhtml" rendered="#{request.isUserInRole('entrenadores')}"/>
                         <p:menuitem value="Sala de Chat" outcome="/chat/chatroom.xhtml" rendered="#{request.isUserInRole('usuarios')}"/>
-                        <p:menuitem value="Añadir nuevo entrenador" outcome="/admin/registroentrenador.xhtml" rendered="#{request.isUserInRole('admin')}"/>
+                        <p:menuitem value="Añadir nuevo entrenador"  rendered="#{request.isUserInRole('admin')}"/>
                         
                     </p:menu>
                 </h:form>
