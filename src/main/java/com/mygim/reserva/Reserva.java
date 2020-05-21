@@ -6,14 +6,19 @@
 package com.mygim.reserva;
 
 import com.mygim.entities.Actividades;
+import com.mygim.entities.ActividadesUsuario;
+import com.mygim.jaas.LoginView;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import javax.faces.context.FacesContext;
 import javax.faces.flow.FlowScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  *
@@ -26,6 +31,8 @@ public class Reserva implements Serializable {
     int actividadId;
     String tarjeta="";
     Date caducidad= new Date();
+    @Inject
+    ActividadesUsuarioEJB act;
     
     @PersistenceContext
     EntityManager em;
@@ -106,5 +113,20 @@ public class Reserva implements Serializable {
         } catch (NoResultException e) {
             return "none";
         }
+    }
+    
+    public String apuntarCliente(){
+        FacesContext context = FacesContext.getCurrentInstance();
+        HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
+        ActividadesUsuario a = new ActividadesUsuario(1,request.getUserPrincipal().getName(),actividadId);
+        act.crearActividadUsuario(a);
+        return "print";
+    }
+    
+    public boolean estaApuntado(){
+        FacesContext context = FacesContext.getCurrentInstance();
+        HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
+        List<ActividadesUsuario> a = em.createNamedQuery("ActividadesUsuario.findByEmailActividadId", ActividadesUsuario.class).setParameter("email",request.getUserPrincipal().getName()).setParameter("actividadId", actividadId).getResultList();
+        return a.size()>0;
     }
 }

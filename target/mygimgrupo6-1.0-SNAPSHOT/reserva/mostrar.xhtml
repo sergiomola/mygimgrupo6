@@ -15,7 +15,12 @@
                     <c:when test="#{reserva.disponibles == 0}">
                         <h2>En esta actividad no hay plazas disponibles, sentimos las molestias</h2>
                         Por favor vuelva a la página anterior si desea reservar otra actividad.
-                            <p:commandButton id="back" value="Atrás" action="showtimes" icon="ui-iconarrowrefresh-1-w"/>
+                        <p:commandButton id="back" value="Atrás" action="reserva" icon="ui-iconarrowrefresh-1-w"/>
+                    </c:when>
+                    <c:when test="#{reserva.estaApuntado()}">
+                        <h2>Ya estás apuntado a esta actividad.</h2>
+                        Por favor vuelva a la página anterior si desea reservar otra actividad.
+                        <p:commandButton id="back" value="Atrás" action="reserva" icon="ui-iconarrowrefresh-1-w"/>
                     </c:when>
                     <c:otherwise>
                         <h2>¿Confirmar?</h2>

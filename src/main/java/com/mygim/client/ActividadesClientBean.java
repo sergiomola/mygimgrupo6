@@ -13,8 +13,10 @@ import java.text.SimpleDateFormat;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
@@ -75,7 +77,9 @@ public class ActividadesClientBean {
         m.setPrecio(bean.getActividadesPrecio());
         m.setDisponibles(bean.getActividadesDisponibles());
         m.setDescripcion(bean.getActividadesDescripcion());
-        m.setCreadaPor("No implementado");
+        FacesContext context = FacesContext.getCurrentInstance();
+        HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
+        m.setCreadaPor(request.getUserPrincipal().getName());
         target.register(ActividadesWriter.class)
                 .request()
                 .post(Entity.entity(m, MediaType.APPLICATION_JSON));

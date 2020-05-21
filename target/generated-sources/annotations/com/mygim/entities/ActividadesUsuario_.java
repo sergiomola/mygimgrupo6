@@ -1,0 +1,15 @@
+package com.mygim.entities;
+
+import javax.annotation.Generated;
+import javax.persistence.metamodel.SingularAttribute;
+import javax.persistence.metamodel.StaticMetamodel;
+
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2020-05-21T16:52:05")
+@StaticMetamodel(ActividadesUsuario.class)
+public class ActividadesUsuario_ { 
+
+    public static volatile SingularAttribute<ActividadesUsuario, Integer> id;
+    public static volatile SingularAttribute<ActividadesUsuario, String> email;
+    public static volatile SingularAttribute<ActividadesUsuario, Integer> actividadId;
+
+}
