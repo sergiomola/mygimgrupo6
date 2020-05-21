@@ -14,16 +14,17 @@ var textField = document.getElementById("texto");
 var users = document.getElementById("users");
 var chatlog = document.getElementById("chatlog");
 var output = document.getElementById("output");
+var nombre = document.getElementById("nombre");
 var username;
 function join() {
-    username = textField.value;
+    username = nombre.value;
     websocket.send(username + " joined");
-    document.getElementById("unirse").style.setProperty("visibility", "hidden");
     document.getElementById("enviar").style.removeProperty("visibility");
     document.getElementById("desconectar").style.removeProperty("visibility");
 }
 function send_message() {
     websocket.send(username + ": " + textField.value);
+    textField.value="";
 }
 function disconnect() {
     websocket.close();
@@ -33,12 +34,13 @@ function disconnect() {
 }
 websocket.onopen = function (evt) {
     writeToScreen("CONNECTED");
+    join();
 };
 websocket.onclose = function (evt) {
+    disconnect();
     writeToScreen("DISCONNECTED");
 };
 websocket.onmessage = function (evt) {
-    writeToScreen("RECEIVED: " + evt.data);
     if (evt.data.indexOf("joined") !== -1) {
         users.innerHTML += evt.data.substring(0, evt.data.indexOf("joined")) + "\n";
     } else {

@@ -22,10 +22,9 @@
                         </tr>
                         <tr>
                             <td colspan="2">
-                                <p:inputText id="texto" value="Usuario"/>
-                                <p:commandButton id="unirse" onclick="join();" value="Unirse"/>
+                                <p:inputText id="texto" value=""/>
                                 <p:commandButton id="enviar" onclick="send_message();" value="Enviar" style="visibility:hidden"/><p/>
-                                <p:commandButton id="desconectar" onclick="disconnect();" value="Desconectarse" style="visibility: hidden"/>
+                                <p:inputText id="nombre" value="#{loginView.authenticatedUser.nombre}" style="visibility: hidden"/>
                             </td>
                         </tr>
                     </table>
