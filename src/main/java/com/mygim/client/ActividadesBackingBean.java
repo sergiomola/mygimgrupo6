@@ -33,6 +33,11 @@ public class ActividadesBackingBean implements Serializable{
     String actividadesDescripcion;
     int actividadesDisponibles;
     String actividadesSala;
+    private Date hoy=new Date();
+
+    public Date getHoy() {
+        return hoy;
+    }
 
     public Date getActividadesFecha() {
         return actividadesFecha;

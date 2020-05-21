@@ -25,7 +25,7 @@
                         </tr>
                         <tr>
                             <th align="left">Fecha:</th>
-                            <td><p:datePicker id="fecha" value="#{actividadesBackingBean.actividadesFecha}" pattern="dd/MM/yyyy" locale="es" required="true"/></td>
+                            <td><p:datePicker id="fecha" value="#{actividadesBackingBean.actividadesFecha}" pattern="dd/MM/yyyy" locale="es" required="true" mindate="#{actividadesBackingBean.hoy}"/></td>
                             <td><p:message for="fecha"/></td>
                         </tr>
                         <tr>
