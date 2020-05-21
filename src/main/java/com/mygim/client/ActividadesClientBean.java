@@ -33,7 +33,7 @@ public class ActividadesClientBean {
     WebTarget target;
     @Inject
     ActividadesBackingBean bean;
-    
+
     @Inject
     UsuariosEJB e;
 
@@ -69,11 +69,26 @@ public class ActividadesClientBean {
                 .resolveTemplate("actividadesId", bean.getActividadesId())
                 .request()
                 .delete();
+
+        e.deleteActividadesUsuario(bean.getActividadesId());
+    }
+
+    public Actividades[] getActividadesPersonalizadas() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
+        if (request.isUserInRole("admin")) {
+            return getActividades();
+        } else {
+            return target.path("entrenador/{email}")
+                    .resolveTemplate("email", request.getUserPrincipal().getName())
+                    .request()
+                    .get(Actividades[].class);
+        }
     }
 
     public void addActividad() {
         Actividades m = new Actividades();
-        DateFormat d=new SimpleDateFormat("dd/MM/yyyy");
+        DateFormat d = new SimpleDateFormat("dd/MM/yyyy");
         m.setId(1);
         m.setNombre(bean.getActividadesNombre());
         m.setSala(bean.getActividadesSala());
@@ -89,8 +104,9 @@ public class ActividadesClientBean {
                 .request()
                 .post(Entity.entity(m, MediaType.APPLICATION_JSON));
     }
-    
-    public List<Usuarios> getUsuariosRegistrados(){
+
+    public List<Usuarios> getUsuariosRegistrados() {
         return e.getActivityUsers(bean.getActividadesId());
     }
+
 }

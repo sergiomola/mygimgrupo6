@@ -70,6 +70,13 @@ public class ActividadesFacadeREST extends AbstractFacade<Actividades> {
     public List<Actividades> findAll() {
         return super.findAll();
     }
+    
+    @GET
+    @Path("entrenador/{email}")
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    public List<Actividades> findAllEntrenador(@PathParam("email") String s) {
+        return em.createNamedQuery("Actividades.findByCreadaPor").setParameter("creadaPor", s).getResultList();
+    }
 
     @GET
     @Path("{from}/{to}")

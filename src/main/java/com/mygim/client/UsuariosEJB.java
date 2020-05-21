@@ -26,4 +26,8 @@ public class UsuariosEJB {
         List<Usuarios> u = em.createQuery("SELECT u FROM Usuarios u WHERE u.email IN :list").setParameter("list", a).getResultList();
         return u;
     }
+    
+    public void deleteActividadesUsuario(int actividadId){
+        em.createQuery("DELETE FROM ActividadesUsuario WHERE actividadId = :actividadId").setParameter("actividadId", actividadId).executeUpdate();
+    }
 }
