@@ -29,12 +29,12 @@
                             <h:outputLabel for="dni" value="DNI:" style="font-weight:bold"/>
                             <p:inputText id="dni" value="#{registerView.dni}" required="true"
                                          requiredMessage="Por favor, introduce tu DNI." >
-                                <f:validator validatorId="com.mygim.validar.DNIValidador" />
+                                <f:validator validatorId="DNIValidador" />
                             </p:inputText>
                             <p:message for="dni"/>
                             
                             <h:outputLabel for="fecha" value="Fecha de nacimiento:" style="font-weight:bold"/>
-                            <p:datePicker id="fecha" value="#{registerView.fecha}" pattern="dd/MM/yyyy" locale="es" required="true"/>
+                            <p:datePicker id="fecha" value="#{registerView.fecha}" pattern="dd/MM/yyyy" locale="es" required="true" requiredMessage="Por favor, introduce la fecha de nacimiento"/>
                             <p:message for="fecha"/>
                             
                             <h:outputLabel for="email" value="E-Mail:" style="font-weight:bold"/>

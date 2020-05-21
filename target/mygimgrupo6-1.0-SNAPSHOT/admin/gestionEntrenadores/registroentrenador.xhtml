@@ -27,8 +27,10 @@
                             <p:message for="apellidos"/>
 
                             <h:outputLabel for="dni" value="DNI:" style="font-weight:bold"/>
-                            <p:inputMask id="dni" value="#{registerView.dni}" required="true"
-                                         requiredMessage="Por favor, introduce tu DNI." mask="99999999a"/>
+                            <p:inputText id="dni" value="#{registerView.dni}" required="true"
+                                         requiredMessage="Por favor, introduce tu DNI." >
+                                <f:validator validatorId="DNIValidador" />
+                            </p:inputText>
                             <p:message for="dni"/>
 
                             <h:outputLabel for="fecha" value="Fecha de nacimiento:" style="font-weight:bold"/>

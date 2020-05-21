@@ -1,20 +1,21 @@
-C:\Users\Jorge\Documents\GitHub\mygimgrupo6\src\main\java\com\mygim\reserva\Reserva.java
-C:\Users\Jorge\Documents\GitHub\mygimgrupo6\src\main\java\com\mygim\client\ActividadesBackingBean.java
-C:\Users\Jorge\Documents\GitHub\mygimgrupo6\src\main\java\com\mygim\entities\Actividades.java
-C:\Users\Jorge\Documents\GitHub\mygimgrupo6\src\main\java\com\mygim\client\ActividadesClientBean.java
-C:\Users\Jorge\Documents\GitHub\mygimgrupo6\src\main\java\com\mygim\entities\Usuarios.java
-C:\Users\Jorge\Documents\GitHub\mygimgrupo6\src\main\java\com\mygim\validar\DNIValidador.java
-C:\Users\Jorge\Documents\GitHub\mygimgrupo6\src\main\java\com\mygim\chat\ChatServer.java
-C:\Users\Jorge\Documents\GitHub\mygimgrupo6\src\main\java\com\mygim\json\ActividadesReader.java
-C:\Users\Jorge\Documents\GitHub\mygimgrupo6\src\main\java\com\mygim\rest\ApplicationConfig.java
-C:\Users\Jorge\Documents\GitHub\mygimgrupo6\src\main\java\com\mygim\jaas\RegisterView.java
-C:\Users\Jorge\Documents\GitHub\mygimgrupo6\src\main\java\com\mygim\jaas\AuthenticationUtils.java
-C:\Users\Jorge\Documents\GitHub\mygimgrupo6\src\main\java\com\mygim\jaas\EmailValidator.java
-C:\Users\Jorge\Documents\GitHub\mygimgrupo6\src\main\java\com\mygim\entities\GruposUsuario.java
-C:\Users\Jorge\Documents\GitHub\mygimgrupo6\src\main\java\com\mygim\rest\AbstractFacade.java
-C:\Users\Jorge\Documents\GitHub\mygimgrupo6\src\main\java\com\mygim\entities\ActividadesUsuario.java
-C:\Users\Jorge\Documents\GitHub\mygimgrupo6\src\main\java\com\mygim\jaas\UserEJB.java
-C:\Users\Jorge\Documents\GitHub\mygimgrupo6\src\main\java\com\mygim\rest\ActividadesFacadeREST.java
-C:\Users\Jorge\Documents\GitHub\mygimgrupo6\src\main\java\com\mygim\jaas\LoginView.java
-C:\Users\Jorge\Documents\GitHub\mygimgrupo6\src\main\java\com\mygim\reserva\ActividadesUsuarioEJB.java
-C:\Users\Jorge\Documents\GitHub\mygimgrupo6\src\main\java\com\mygim\json\ActividadesWriter.java
+C:\Users\Sergio 10\Documents\GitHub\mygimgrupo6\src\main\java\com\mygim\client\ActividadesBackingBean.java
+C:\Users\Sergio 10\Documents\GitHub\mygimgrupo6\src\main\java\com\mygim\rest\AbstractFacade.java
+C:\Users\Sergio 10\Documents\GitHub\mygimgrupo6\src\main\java\com\mygim\json\ActividadesReader.java
+C:\Users\Sergio 10\Documents\GitHub\mygimgrupo6\src\main\java\com\mygim\entities\Actividades.java
+C:\Users\Sergio 10\Documents\GitHub\mygimgrupo6\src\main\java\com\mygim\jaas\DNIValidador.java
+C:\Users\Sergio 10\Documents\GitHub\mygimgrupo6\src\main\java\com\mygim\chat\ChatServer.java
+C:\Users\Sergio 10\Documents\GitHub\mygimgrupo6\src\main\java\com\mygim\client\ActividadesClientBean.java
+C:\Users\Sergio 10\Documents\GitHub\mygimgrupo6\src\main\java\com\mygim\jaas\RegisterView.java
+C:\Users\Sergio 10\Documents\GitHub\mygimgrupo6\src\main\java\com\mygim\reserva\ActividadesUsuarioEJB.java
+C:\Users\Sergio 10\Documents\GitHub\mygimgrupo6\src\main\java\com\mygim\entities\GruposUsuario.java
+C:\Users\Sergio 10\Documents\GitHub\mygimgrupo6\src\main\java\com\mygim\jaas\EmailValidator.java
+C:\Users\Sergio 10\Documents\GitHub\mygimgrupo6\src\main\java\com\mygim\json\ActividadesWriter.java
+C:\Users\Sergio 10\Documents\GitHub\mygimgrupo6\src\main\java\com\mygim\rest\ActividadesFacadeREST.java
+C:\Users\Sergio 10\Documents\GitHub\mygimgrupo6\src\main\java\com\mygim\jaas\AuthenticationUtils.java
+C:\Users\Sergio 10\Documents\GitHub\mygimgrupo6\src\main\java\com\mygim\reserva\Reserva.java
+C:\Users\Sergio 10\Documents\GitHub\mygimgrupo6\src\main\java\com\mygim\jaas\LoginView.java
+C:\Users\Sergio 10\Documents\GitHub\mygimgrupo6\src\main\java\com\mygim\entities\Usuarios.java
+C:\Users\Sergio 10\Documents\GitHub\mygimgrupo6\src\main\java\com\mygim\jaas\UserEJB.java
+C:\Users\Sergio 10\Documents\GitHub\mygimgrupo6\src\main\java\com\mygim\rest\ApplicationConfig.java
+C:\Users\Sergio 10\Documents\GitHub\mygimgrupo6\src\main\java\com\mygim\entities\ActividadesUsuario.java
+C:\Users\Sergio 10\Documents\GitHub\mygimgrupo6\src\main\java\com\mygim\client\UsuariosEJB.java

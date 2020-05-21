@@ -7,7 +7,6 @@ com\mygim\reserva\Reserva.class
 com\mygim\json\ActividadesWriter.class
 com\mygim\jaas\UserEJB.class
 com\mygim\client\ActividadesBackingBean.class
-com\mygim\validar\DNIValidador.class
 com\mygim\entities\GruposUsuario_.class
 com\mygim\jaas\RegisterView.class
 com\mygim\entities\ActividadesUsuario_.class
