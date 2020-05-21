@@ -6,10 +6,12 @@
 package com.mygim.client;
 
 import com.mygim.entities.Actividades;
+import com.mygim.entities.Usuarios;
 import com.mygim.json.ActividadesReader;
 import com.mygim.json.ActividadesWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.enterprise.context.RequestScoped;
@@ -31,6 +33,9 @@ public class ActividadesClientBean {
     WebTarget target;
     @Inject
     ActividadesBackingBean bean;
+    
+    @Inject
+    UsuariosEJB e;
 
     @PostConstruct
     public void init() {
@@ -83,5 +88,9 @@ public class ActividadesClientBean {
         target.register(ActividadesWriter.class)
                 .request()
                 .post(Entity.entity(m, MediaType.APPLICATION_JSON));
+    }
+    
+    public List<Usuarios> getUsuariosRegistrados(){
+        return e.getActivityUsers(bean.getActividadesId());
     }
 }
