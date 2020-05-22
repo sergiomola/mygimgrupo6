@@ -37,6 +37,11 @@ public class RegisterView implements Serializable {
     private String dni;
     private String telefono;
     private Date fecha;
+    private Date hoy = new Date();
+
+    public Date getHoy() {
+        return hoy;
+    }
     private static Logger log = Logger.getLogger(RegisterView.class.getName());
     @Inject
     private UserEJB userEJB;

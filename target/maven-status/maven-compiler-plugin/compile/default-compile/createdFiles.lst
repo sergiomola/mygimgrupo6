@@ -4,6 +4,7 @@ com\mygim\rest\ApplicationConfig.class
 com\mygim\entities\Actividades.class
 com\mygim\client\ActividadesClientBean.class
 com\mygim\reserva\Reserva.class
+com\mygim\client\UsuariosEJB.class
 com\mygim\json\ActividadesWriter.class
 com\mygim\jaas\UserEJB.class
 com\mygim\client\ActividadesBackingBean.class
@@ -14,6 +15,7 @@ com\mygim\entities\Actividades_.class
 com\mygim\rest\ActividadesFacadeREST.class
 com\mygim\jaas\AuthenticationUtils.class
 com\mygim\json\ActividadesReader$1.class
+com\mygim\jaas\DNIValidador.class
 com\mygim\json\ActividadesReader.class
 com\mygim\reserva\ActividadesUsuarioEJB.class
 com\mygim\chat\ChatServer.class

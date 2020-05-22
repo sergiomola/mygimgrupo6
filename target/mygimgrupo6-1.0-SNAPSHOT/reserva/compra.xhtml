@@ -24,7 +24,7 @@
                         <p:message for="tarjeta"/>
                         
                         <p:outputLabel for="fecha" value="Fecha de expiracion (mes/año)"/>
-                        <p:datePicker id="fecha" view="month" value="#{reserva.caducidad}" pattern="MM/yyyy" yearNavigator="true" locale="es" yearRange="2020:2030"  required="true"/>
+                        <p:datePicker id="fecha" view="month" value="#{reserva.caducidad}" pattern="MM/yyyy" yearNavigator="true" locale="es" yearRange="2020:2030"   mindate="c" required="true"/>
                         <p:message for="fecha"/>
                         
                     </h:panelGrid>

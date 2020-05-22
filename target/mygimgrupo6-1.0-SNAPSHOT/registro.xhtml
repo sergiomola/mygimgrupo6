@@ -34,7 +34,8 @@
                             <p:message for="dni"/>
                             
                             <h:outputLabel for="fecha" value="Fecha de nacimiento:" style="font-weight:bold"/>
-                            <p:datePicker id="fecha" value="#{registerView.fecha}" pattern="dd/MM/yyyy" locale="es" required="true" requiredMessage="Por favor, introduce la fecha de nacimiento"/>
+                            <p:calendar id="fecha" value="#{registerView.fecha}" pattern="dd/MM/yyyy" locale="es" required="true" 
+                                        requiredMessage="Por favor, introduce la fecha de nacimiento" navigator="true" yearRange="-100:-12" maxdate="-12y"/>
                             <p:message for="fecha"/>
                             
                             <h:outputLabel for="email" value="E-Mail:" style="font-weight:bold"/>
