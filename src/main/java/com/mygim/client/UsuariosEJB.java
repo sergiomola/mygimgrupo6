@@ -23,6 +23,9 @@ public class UsuariosEJB {
     
     public List<Usuarios> getActivityUsers(int actividadId){
         List<String> a = em.createQuery("SELECT a.email FROM ActividadesUsuario a WHERE a.actividadId = :actividadId").setParameter("actividadId", actividadId).getResultList();
+        if(a==null || a.isEmpty()){
+            return null;
+        }
         List<Usuarios> u = em.createQuery("SELECT u FROM Usuarios u WHERE u.email IN :list").setParameter("list", a).getResultList();
         return u;
     }

@@ -75,7 +75,7 @@ public class RegisterView implements Serializable {
     }
 
     public String register() {
-        DateFormat d = new SimpleDateFormat("dd/MM/yyyy");
+        DateFormat d = new SimpleDateFormat("yyyy-MM-dd");
         Usuarios user = new Usuarios(email, password, nombre, apellidos, dni, d.format(fecha), telefono);
         userEJB.createUser(user);
         log.info("Nuevo usuario creado con e-mail: " + email + " y nombre: " + nombre);
@@ -83,7 +83,7 @@ public class RegisterView implements Serializable {
     }
 
     public String registerEntrenador() {
-        DateFormat d = new SimpleDateFormat("dd/MM/yyyy");
+        DateFormat d = new SimpleDateFormat("yyyy-MM-dd");
         Usuarios user = new Usuarios(email, password, nombre, apellidos, dni, d.format(fecha), telefono);
         userEJB.createEntrenador(user);
         log.info("Nuevo usuario creado con e-mail: " + email + " y nombre: " + nombre);
@@ -98,7 +98,7 @@ public class RegisterView implements Serializable {
         dni = user.getDni();
         telefono = user.getTelefono();
         try {
-            fecha = new SimpleDateFormat("dd/MM/yyyy").parse(user.getNacimiento());
+            fecha = new SimpleDateFormat("yyyy-MM-dd").parse(user.getNacimiento());
         } catch (Exception e) {
         }
         return "entrenador";

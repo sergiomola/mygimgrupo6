@@ -88,7 +88,7 @@ public class ActividadesClientBean {
 
     public void addActividad() {
         Actividades m = new Actividades();
-        DateFormat d = new SimpleDateFormat("dd/MM/yyyy");
+        DateFormat d = new SimpleDateFormat("yyyy-MM-dd");
         m.setId(1);
         m.setNombre(bean.getActividadesNombre());
         m.setSala(bean.getActividadesSala());
