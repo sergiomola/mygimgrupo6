@@ -37,4 +37,5 @@ public class ChatServer {
             peer.getBasicRemote().sendText(message);
         }
     }
+    
 }

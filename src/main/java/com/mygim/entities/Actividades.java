@@ -32,7 +32,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Actividades.findByNombre", query = "SELECT a FROM Actividades a WHERE a.nombre = :nombre")
     , @NamedQuery(name = "Actividades.findBySala", query = "SELECT a FROM Actividades a WHERE a.sala = :sala")
     , @NamedQuery(name = "Actividades.findByFecha", query = "SELECT a FROM Actividades a WHERE a.fecha = :fecha")
-    , @NamedQuery(name = "Actividades.findByHora", query = "SELECT a FROM Actividades a WHERE a.hora = :hora")
+    , @NamedQuery(name = "Actividades.findByHoraInicio", query = "SELECT a FROM Actividades a WHERE a.horaInicio = :horaInicio")
+    , @NamedQuery(name = "Actividades.findByHoraFinal", query = "SELECT a FROM Actividades a WHERE a.horaFinal = :horaFinal")
     , @NamedQuery(name = "Actividades.findByPrecio", query = "SELECT a FROM Actividades a WHERE a.precio = :precio")
     , @NamedQuery(name = "Actividades.findByDisponibles", query = "SELECT a FROM Actividades a WHERE a.disponibles = :disponibles")
     , @NamedQuery(name = "Actividades.findByDescripcion", query = "SELECT a FROM Actividades a WHERE a.descripcion = :descripcion")
@@ -63,8 +64,13 @@ public class Actividades implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 5)
-    @Column(name = "HORA")
-    private String hora;
+    @Column(name = "HORA_INICIO")
+    private String horaInicio;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 5)
+    @Column(name = "HORA_FINAL")
+    private String horaFinal;
     @Basic(optional = false)
     @NotNull
     @Column(name = "PRECIO")
@@ -91,12 +97,13 @@ public class Actividades implements Serializable {
         this.id = id;
     }
 
-    public Actividades(Integer id, String nombre, String sala, String fecha, String hora, int precio, int disponibles, String descripcion, String creadaPor) {
+    public Actividades(Integer id, String nombre, String sala, String fecha, String horaInicio, String horaFinal, int precio, int disponibles, String descripcion, String creadaPor) {
         this.id = id;
         this.nombre = nombre;
         this.sala = sala;
         this.fecha = fecha;
-        this.hora = hora;
+        this.horaInicio = horaInicio;
+        this.horaFinal = horaFinal;
         this.precio = precio;
         this.disponibles = disponibles;
         this.descripcion = descripcion;
@@ -135,12 +142,20 @@ public class Actividades implements Serializable {
         this.fecha = fecha;
     }
 
-    public String getHora() {
-        return hora;
+    public String getHoraInicio() {
+        return horaInicio;
     }
 
-    public void setHora(String hora) {
-        this.hora = hora;
+    public void setHoraInicio(String horaInicio) {
+        this.horaInicio = horaInicio;
+    }
+
+    public String getHoraFinal() {
+        return horaFinal;
+    }
+
+    public void setHoraFinal(String horaFinal) {
+        this.horaFinal = horaFinal;
     }
 
     public int getPrecio() {

@@ -28,7 +28,8 @@ public class ActividadesBackingBean implements Serializable{
         this.actividadesNombre = actividadesNombre;
     }
     Date actividadesFecha;
-    String actividadesHora;
+    String actividadesHoraFinal;
+    String actividadesHoraInicio;
     int actividadesPrecio;
     String actividadesDescripcion;
     int actividadesDisponibles;
@@ -47,12 +48,20 @@ public class ActividadesBackingBean implements Serializable{
         this.actividadesFecha = actividadesFecha;
     }
 
-    public String getActividadesHora() {
-        return actividadesHora;
+    public String getActividadesHoraFinal() {
+        return actividadesHoraFinal;
     }
 
-    public void setActividadesHora(String actividadesHora) {
-        this.actividadesHora = actividadesHora;
+    public void setActividadesHoraFinal(String actividadesHoraFinal) {
+        this.actividadesHoraFinal = actividadesHoraFinal;
+    }
+
+    public String getActividadesHoraInicio() {
+        return actividadesHoraInicio;
+    }
+
+    public void setActividadesHoraInicio(String actividadesHoraInicio) {
+        this.actividadesHoraInicio = actividadesHoraInicio;
     }
 
     public int getActividadesPrecio() {

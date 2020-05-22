@@ -93,7 +93,8 @@ public class ActividadesClientBean {
         m.setNombre(bean.getActividadesNombre());
         m.setSala(bean.getActividadesSala());
         m.setFecha(d.format(bean.getActividadesFecha()));
-        m.setHora(bean.getActividadesHora());
+        m.setHoraInicio(bean.getActividadesHoraInicio());
+        m.setHoraFinal(bean.getActividadesHoraFinal());
         m.setPrecio(bean.getActividadesPrecio());
         m.setDisponibles(bean.getActividadesDisponibles());
         m.setDescripcion(bean.getActividadesDescripcion());

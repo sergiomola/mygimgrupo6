@@ -19,18 +19,20 @@
                                        itemValue="#{a.id}"
                                        itemLabel="#{a.nombre}"/>
                     </p:selectOneRadio>
-                    <p:panelGrid columns="5"  style="width: 100%">
+                    <p:panelGrid columns="6"  style="width: 100%">
                         <h:outputText value=""/>
                         <h:outputText value="Nombre" style="font-weight: bold"/>
                         <h:outputText value="Fecha" style="font-weight: bold"/>
-                        <h:outputText value="Hora" style="font-weight: bold"/>
+                        <h:outputText value="Hora de Inicio" style="font-weight: bold"/>
+                        <h:outputText value="Hora de Final" style="font-weight: bold"/>
                         <h:outputText value="Plazas" style="font-weight: bold"/>
 
                         <c:forEach var="a" items="#{actividadesFacadeREST.findAll()}" varStatus="loop">
                             <p:radioButton for="customRadio" itemIndex="#{loop.index}"/>
                             <h:outputText value="#{a.nombre}"/>
                             <h:outputText value="#{a.fecha}"/>
-                            <h:outputText value="#{a.hora}"/>
+                            <h:outputText value="#{a.horaInicio}"/>
+                            <h:outputText value="#{a.horaFinal}"/>
                             <h:outputText value="#{a.disponibles}"/>
                         </c:forEach>
                     </p:panelGrid>

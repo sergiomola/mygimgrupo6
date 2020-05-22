@@ -50,8 +50,11 @@ public class ActividadesReader implements MessageBodyReader<Actividades> {
                         case "fecha":
                             actividad.setFecha(parser.getString());
                             break;
-                        case "hora":
-                            actividad.setHora(parser.getString());
+                        case "horaFinal":
+                            actividad.setHoraFinal(parser.getString());
+                            break;
+                        case "horaInicio":
+                            actividad.setHoraInicio(parser.getString());
                             break;
                         case "precio":
                             actividad.setPrecio(parser.getInt());

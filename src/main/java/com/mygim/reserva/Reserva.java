@@ -88,10 +88,19 @@ public class Reserva implements Serializable {
         }
     }
     
-    public String getHora() {
+    public String getHoraInicio() {
         try {
             List<Actividades> list = em.createNamedQuery("Actividades.findById", Actividades.class).setParameter("id", actividadId).getResultList();
-            return list.get(0).getHora();
+            return list.get(0).getHoraInicio();
+        } catch (NoResultException e) {
+            return "none";
+        }
+    }
+    
+    public String getHoraFinal() {
+        try {
+            List<Actividades> list = em.createNamedQuery("Actividades.findById", Actividades.class).setParameter("id", actividadId).getResultList();
+            return list.get(0).getHoraFinal();
         } catch (NoResultException e) {
             return "none";
         }

@@ -78,7 +78,9 @@ public class UserEJB {
             emails = query.getResultList();
         } catch (Exception e) {
         }
-
+        if(emails.isEmpty()){
+            return null;
+        }
         TypedQuery<Usuarios> query2 = em.createQuery("SELECT u FROM Usuarios u WHERE u.email IN :email", Usuarios.class);
         query2.setParameter("email", emails);
         List<Usuarios> users = null;
