@@ -6,6 +6,7 @@
 package com.mygim.rest;
 
 import com.mygim.entities.Actividades;
+import java.time.LocalDate;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Named;
@@ -69,6 +70,13 @@ public class ActividadesFacadeREST extends AbstractFacade<Actividades> {
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public List<Actividades> findAll() {
         return super.findAll();
+    }
+    
+    @GET
+    @Path("posteriores")
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    public List<Actividades> findAllPosteriores() {
+        return em.createQuery("SELECT a FROM Actividades a WHERE a.fecha > :date").setParameter("date", LocalDate.now().toString()).getResultList();
     }
     
     @GET
