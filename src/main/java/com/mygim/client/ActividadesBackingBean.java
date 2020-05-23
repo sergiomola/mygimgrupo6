@@ -5,9 +5,14 @@
  */
 package com.mygim.client;
 
+import com.mygim.entities.Actividades;
+import static com.mygim.entities.Actividades_.id;
+import com.mygim.reserva.ActividadesUsuarioEJB;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.enterprise.context.SessionScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
@@ -19,7 +24,8 @@ import javax.inject.Named;
 public class ActividadesBackingBean implements Serializable{
     int actividadesId;
     String actividadesNombre;
-
+    @Inject
+    private ActividadesUsuarioEJB actividadesEJB;
     public String getActividadesNombre() {
         return actividadesNombre;
     }
@@ -102,5 +108,20 @@ public class ActividadesBackingBean implements Serializable{
 
     public void setActividadesId(int actividadesId) {
         this.actividadesId = actividadesId;
+    }
+    
+    public void ponerInfo(){
+        Actividades act= actividadesEJB.findById(actividadesId);
+        actividadesNombre = act.getNombre();
+        try {
+            actividadesFecha = new SimpleDateFormat("yyyy-MM-dd").parse(act.getFecha());
+        } catch (Exception e) {
+        }
+        actividadesHoraFinal = act.getHoraFinal();
+        actividadesHoraInicio = act.getHoraInicio();
+        actividadesPrecio = act.getPrecio();
+        actividadesDescripcion = act.getDescripcion();
+        actividadesDisponibles = act.getDisponibles();
+        actividadesSala = act.getSala();
     }
 }

@@ -42,11 +42,16 @@
                                 <h:outputText value="#{actividadesClientBean.actividad.descripcion}"/>
                             </p:panelGrid>
                             <p:commandButton value="Back" action="manage" icon="ui-icon-arrowrefresh-1-w"/>
-                            <p:commandButton value="Editar" action="modificarActividad" icon="ui-icon-pencil"/>
+                            <p:commandButton 
+                                value="Editar" 
+                                action="modificarActividad" 
+                                icon="ui-icon-pencil"
+                                actionListener="#{actividadesBackingBean.ponerInfo()}"/>
                             <p:commandButton value="Ver usuarios registrados" action="apuntados" icon="ui-icon-person"/>
                             <p:commandButton
                                 value="Borrar"
                                 action="manage"
+                                icon="ui-icon-trash"
                                 actionListener="#{actividadesClientBean.deleteActividades()}"/>
                         </c:otherwise>
                     </c:choose>

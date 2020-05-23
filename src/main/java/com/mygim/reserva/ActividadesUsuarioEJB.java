@@ -28,4 +28,8 @@ public class ActividadesUsuarioEJB {
         em.persist(act);
     }
     
+    public Actividades findById(int id) {
+        Actividades act = em.createNamedQuery("Actividades.findById", Actividades.class).setParameter("id", id).getSingleResult();
+        return act;
+    }
 }
