@@ -109,7 +109,7 @@ public class ActividadesClientBean {
     public void editActividad() {
         Actividades m = new Actividades();
         DateFormat d = new SimpleDateFormat("yyyy-MM-dd");
-        m.setId(1);
+        m.setId(bean.getActividadesId());
         m.setNombre(bean.getActividadesNombre());
         m.setSala(bean.getActividadesSala());
         m.setFecha(d.format(bean.getActividadesFecha()));
@@ -123,7 +123,7 @@ public class ActividadesClientBean {
         m.setCreadaPor(request.getUserPrincipal().getName());
         target.register(ActividadesWriter.class)
                 .path("{id}")
-                .resolveTemplate("id", bean.getActividadesNombre())
+                .resolveTemplate("id", bean.getActividadesId())
                 .request()
                 .put(Entity.entity(m, MediaType.APPLICATION_JSON));
     }
