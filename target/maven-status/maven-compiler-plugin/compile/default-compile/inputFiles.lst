@@ -13,6 +13,7 @@ C:\Users\Sergio 10\Documents\GitHub\mygimgrupo6\src\main\java\com\mygim\rest\Act
 C:\Users\Sergio 10\Documents\GitHub\mygimgrupo6\src\main\java\com\mygim\jaas\LoginView.java
 C:\Users\Sergio 10\Documents\GitHub\mygimgrupo6\src\main\java\com\mygim\entities\Usuarios.java
 C:\Users\Sergio 10\Documents\GitHub\mygimgrupo6\src\main\java\com\mygim\rest\ApplicationConfig.java
+C:\Users\Sergio 10\Documents\GitHub\mygimgrupo6\src\main\java\com\mygim\schedule\MisActividadesView.java
 C:\Users\Sergio 10\Documents\GitHub\mygimgrupo6\src\main\java\com\mygim\entities\ActividadesUsuario.java
 C:\Users\Sergio 10\Documents\GitHub\mygimgrupo6\src\main\java\com\mygim\rest\SalasFacadeREST.java
 C:\Users\Sergio 10\Documents\GitHub\mygimgrupo6\src\main\java\com\mygim\rest\AbstractFacade.java
@@ -21,6 +22,7 @@ C:\Users\Sergio 10\Documents\GitHub\mygimgrupo6\src\main\java\com\mygim\jaas\Ema
 C:\Users\Sergio 10\Documents\GitHub\mygimgrupo6\src\main\java\com\mygim\json\ActividadesWriter.java
 C:\Users\Sergio 10\Documents\GitHub\mygimgrupo6\src\main\java\com\mygim\jaas\AuthenticationUtils.java
 C:\Users\Sergio 10\Documents\GitHub\mygimgrupo6\src\main\java\com\mygim\reserva\Reserva.java
+C:\Users\Sergio 10\Documents\GitHub\mygimgrupo6\src\main\java\com\mygim\schedule\ActividadesEJB.java
 C:\Users\Sergio 10\Documents\GitHub\mygimgrupo6\src\main\java\com\mygim\jaas\UserEJB.java
 C:\Users\Sergio 10\Documents\GitHub\mygimgrupo6\src\main\java\com\mygim\json\SalasReader.java
 C:\Users\Sergio 10\Documents\GitHub\mygimgrupo6\src\main\java\com\mygim\salas\SalasBackingBean.java
