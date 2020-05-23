@@ -43,14 +43,7 @@
                 <h2><h:outputText value="Aplicación Gimnasio Mygim - Valladolid"/></h2>
                 <h:form>
                     <p:toolbar rendered="#{request.isUserInRole('usuarios')}">
-                        <f:facet name="left">
-                            <p:commandButton type="button" value="New" icon="ui-icon-document"/>
-                            <p:commandButton type="button" value="Open" icon="ui-icon-folder-open" />
-                            <span class="ui-separator">
-                                <span class="ui-icon ui-icon-grip-dotted-vertical" />
-                            </span>
-                            <p:commandButton type="button" title="Save" icon="ui-icon-disk" />
-                        </f:facet>
+                        
                         <f:facet name="right">
                             <p:menuButton value="#{loginView.authenticatedUser.nombre}">
                                 <p:menuitem value="Cerrar sesión" action="#{loginView.logout}" icon="ui-icon-power" />

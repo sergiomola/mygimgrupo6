@@ -8,6 +8,7 @@ package com.mygim.rest;
 import com.mygim.entities.Salas;
 import java.util.List;
 import javax.ejb.Stateless;
+import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.ws.rs.Consumes;
@@ -24,6 +25,7 @@ import javax.ws.rs.core.MediaType;
  *
  * @author Sergio 10
  */
+@Named
 @Stateless
 @Path("com.mygim.entities.salas")
 public class SalasFacadeREST extends AbstractFacade<Salas> {
