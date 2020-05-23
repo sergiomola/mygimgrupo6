@@ -15,7 +15,11 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.component.UIComponent;
+import javax.faces.component.UIInput;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ComponentSystemEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
@@ -133,4 +137,48 @@ public class ActividadesClientBean {
         return e.getActivityUsers(bean.getActividadesId());
     }
 
+    
+    public void comprobarHoras(ComponentSystemEvent event){
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        UIComponent components = event.getComponent();
+        UIInput uiInputHoraI = (UIInput) components.findComponent("horaInicio");
+        String HoraI = uiInputHoraI.getLocalValue() == null ? "" : uiInputHoraI.getLocalValue().toString();
+        UIInput uiInputHoraF = (UIInput) components.findComponent("horaFinal");
+        String HoraF = uiInputHoraF.getLocalValue() == null ? "" : uiInputHoraF.getLocalValue().toString();
+        UIInput uiInputSala = (UIInput) components.findComponent("sala");
+        String Sala = uiInputSala.getLocalValue() == null ? "" : uiInputSala.getLocalValue().toString();
+        UIInput uiInputFecha = (UIInput) components.findComponent("fecha");
+        String Fecha = uiInputFecha.getLocalValue() == null ? "" : uiInputFecha.getLocalValue().toString();
+        
+        if(HoraI.isEmpty() || HoraF.isEmpty()){
+            return;
+        }
+        
+        if(HoraI.substring(0,2).compareTo("24")>=0 || HoraI.substring(3,5).compareTo("60")>=0){
+            FacesMessage msg = new FacesMessage("La hora introducida no es válidas");
+            msg.setSeverity(FacesMessage.SEVERITY_ERROR);
+            facesContext.addMessage(uiInputHoraI.getClientId(), msg);
+            facesContext.renderResponse();
+        }
+        
+        if(HoraF.substring(0,2).compareTo("24")>=0 || HoraF.substring(3,5).compareTo("60")>=0){
+            FacesMessage msg = new FacesMessage("Laa hora introducida no es válida");
+            msg.setSeverity(FacesMessage.SEVERITY_ERROR);
+            facesContext.addMessage(uiInputHoraF.getClientId(), msg);
+            facesContext.renderResponse();
+        }
+        
+        if(HoraI.compareTo(HoraF)>=0){
+            FacesMessage msg = new FacesMessage("La hora inicial tiene que ser inferior a la posterior");
+            msg.setSeverity(FacesMessage.SEVERITY_ERROR);
+            facesContext.addMessage(uiInputHoraI.getClientId(), msg);
+            facesContext.renderResponse();
+        }
+        if(e.haySuperposicion(Fecha, HoraI, HoraF, Sala)){
+            FacesMessage msg = new FacesMessage("La sala está ocupada a esas horas");
+            msg.setSeverity(FacesMessage.SEVERITY_ERROR);
+            facesContext.addMessage(uiInputHoraI.getClientId(), msg);
+            facesContext.renderResponse();
+        }
+    }
 }

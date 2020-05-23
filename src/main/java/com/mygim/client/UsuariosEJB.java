@@ -5,6 +5,7 @@
  */
 package com.mygim.client;
 
+import com.mygim.entities.Actividades;
 import com.mygim.entities.Usuarios;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -32,5 +33,15 @@ public class UsuariosEJB {
     
     public void deleteActividadesUsuario(int actividadId){
         em.createQuery("DELETE FROM ActividadesUsuario WHERE actividadId = :actividadId").setParameter("actividadId", actividadId).executeUpdate();
+    }
+    
+    public boolean haySuperposicion(String fecha, String horaI, String horaF, String sala){
+        List<Actividades> a = em.createQuery("SELECT a FROM Actividades a WHERE a.fecha = :fecha AND a.sala = :sala AND ((a.horaInicio < :horaI AND a.horaFinal > :horaI ) OR (a.horaFinal > :horaF AND a.horaInicio < :horaF))")
+                .setParameter("fecha", fecha)
+                .setParameter("sala", sala)
+                .setParameter("horaI", horaI)
+                .setParameter("horaF", horaF)
+                .getResultList();
+        return !a.isEmpty();
     }
 }
