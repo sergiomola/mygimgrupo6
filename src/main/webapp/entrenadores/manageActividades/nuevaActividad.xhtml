@@ -13,6 +13,7 @@
             <ui:define name="content">
                 <h1>Añadir nueva actividad</h1>
                 <h:form>
+                    <f:event listener="#{actividadesClientBean.comprobarHoras}" type="postValidate"/>
                     <table cellpadding="5" cellspacing="5">
                         <tr>
                             <th align="left">Nombre:</th>

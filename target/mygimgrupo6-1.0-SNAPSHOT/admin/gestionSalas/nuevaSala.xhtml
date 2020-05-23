@@ -11,26 +11,25 @@
         <ui:composition template="./../../template.xhtml">
 
             <ui:define name="content">
-                <h1>Añadir nueva sala</h1>
                 <h:form>
                     <f:event listener="#{salasClientBean.validateNombre}" type="postValidate" />
-                    <p:panelGrid columns="3">
-                        
+                    <p:panel header="Añadir nueva sala">
+                        <h:panelGrid columns="3" id="grid">
+
                             <h:outputLabel for="nombre" value="Nombre:" style="font-weight:bold"/>
                             <p:inputText id="nombre" value="#{salasBackingBean.nombre}" required="true"
                                          requiredMessage="Por favor, introduce el nombre." maxlength="30"/>
                             <p:message for="nombre"/>
-                            
+
                             <h:outputLabel for="aforo" value="Aforo:" style="font-weight:bold"/>
                             <p:spinner id="aforo" value="#{salasBackingBean.aforo}" required="true"
-                                         requiredMessage="Por favor, introduce el aforo." min="1"/>
+                                       requiredMessage="Por favor, introduce el aforo." min="1"/>
                             <p:message for="aforo"/>
-                        
-                    </p:panelGrid>
+
+                        </h:panelGrid>
+                    </p:panel>
                     <p:commandButton
-                        value="Añadir"
-                        action="salas"
-                        actionListener="#{salasClientBean.addSalas()}"/>
+                        actionListener="#{salasClientBean.addSalas()}" update="grid" value="Añadir" action="salas" />
                 </h:form>
             </ui:define>
 
