@@ -105,6 +105,29 @@ public class ActividadesClientBean {
                 .request()
                 .post(Entity.entity(m, MediaType.APPLICATION_JSON));
     }
+    
+    public void editActividad() {
+        Actividades m = new Actividades();
+        DateFormat d = new SimpleDateFormat("yyyy-MM-dd");
+        m.setId(1);
+        m.setNombre(bean.getActividadesNombre());
+        m.setSala(bean.getActividadesSala());
+        m.setFecha(d.format(bean.getActividadesFecha()));
+        m.setHoraInicio(bean.getActividadesHoraInicio());
+        m.setHoraFinal(bean.getActividadesHoraFinal());
+        m.setPrecio(bean.getActividadesPrecio());
+        m.setDisponibles(bean.getActividadesDisponibles());
+        m.setDescripcion(bean.getActividadesDescripcion());
+        FacesContext context = FacesContext.getCurrentInstance();
+        HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
+        m.setCreadaPor(request.getUserPrincipal().getName());
+        target.register(ActividadesWriter.class)
+                .path("{id}")
+                .resolveTemplate("id", bean.getActividadesNombre())
+                .request()
+                .put(Entity.entity(m, MediaType.APPLICATION_JSON));
+    }
+
 
     public List<Usuarios> getUsuariosRegistrados() {
         return e.getActivityUsers(bean.getActividadesId());
