@@ -16,10 +16,10 @@
                     <p:selectOneRadio value="#{actividadesBackingBean.actividadesId}"
                                       layout="pageDirection">
                         <c:forEach items="#{actividadesClientBean.actividadesPersonalizadas}" var="m">
-                            <f:selectItem itemValue="#{m.id}" itemLabel="#{m.nombre}" value="#{ActividadesMnagedBean.toggle}"/>
+                            <f:selectItem itemValue="#{m.id}" itemLabel="#{m.nombre}"/>
                         </c:forEach>
                     </p:selectOneRadio>
-                    <p:commandButton value="Detalles" action="actividad" disabled="#{ActividadesMnagedBean.isEnabled}" />
+                    <p:commandButton value="Detalles" action="actividad"  />
                     <p:commandButton value="Añadir Actividad" action="nuevaActividad" />
                 </h:form>
             </ui:define>
