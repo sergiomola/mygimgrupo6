@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../../template.xhtml">
+
+            <ui:define name="content">
+                <h1><h:outputText value="Elige la sala"/></h1>
+                <h:form>
+                    <p:selectOneRadio id="customRadio"  layout="custom" value="#{salasBackingBean.nombre}" required="true">
+                        <f:selectItems value="#{salasClientBean.salas}" var="a"
+                                       itemValue="#{a.nombre}"
+                                       itemLabel="#{a.nombre}"/>
+                    </p:selectOneRadio>
+                    <p:panelGrid columns="3"  style="width: 100%">
+                        <h:outputText value=""/>
+                        <h:outputText value="Nombre" style="font-weight: bold"/>
+                        <h:outputText value="Aforo" style="font-weight: bold"/>
+
+                        <c:forEach var="a" items="#{salasClientBean.salas}" varStatus="loop">
+                            <p:radioButton for="customRadio" itemIndex="#{loop.index}"/>
+                            <h:outputText value="#{a.nombre}"/>
+                            <h:outputText value="#{a.aforo}"/>
+                        </c:forEach>
+                    </p:panelGrid>
+
+                    <p:linkButton id="add" value="Añadir una nueva Sala" outcome="nuevaSala"/>
+                    <p:commandButton id="edit" value="Modificar Aforo" action="editSala"/>
+                    <p:commandButton id="delete" value="Borrar Sala" actionListener="#{salasClientBean.deleteSalas()}" oncomplete="location.reload()"/>
+                    <p:message for="customRadio"/>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

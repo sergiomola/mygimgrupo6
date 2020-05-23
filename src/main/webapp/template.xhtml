@@ -27,9 +27,10 @@
                         <p:menuitem value="Registrarse" outcome="/registro.xhtml" rendered="#{request.isUserInRole('usuarios')==false}" icon="ui-icon-pencil"/>
                         <p:menuitem value="Actividades" outcome="/clientes/actividades.xhtml" rendered="#{request.isUserInRole('clientes')}"/>
                         <p:menuitem value="Reserva" action="reserva" rendered="#{request.isUserInRole('clientes')}"/>
-                        <p:menuitem value="Gestionar mis Actividades" outcome="/entrenadores/client/manage.xhtml" rendered="#{request.isUserInRole('entrenadores')}"/>
+                        <p:menuitem value="Gestionar mis Actividades" outcome="/entrenadores/manageActividades/manage.xhtml" rendered="#{request.isUserInRole('entrenadores')}"/>
                         <p:menuitem value="Sala de Chat" outcome="/usuarios/chat/chatroom.xhtml" rendered="#{request.isUserInRole('usuarios')}"/>
                         <p:menuitem value="Gestionar entrenadores"  outcome="/admin/gestionEntrenadores/gestionarEntrenadores.xhtml" rendered="#{request.isUserInRole('admin')}"/>
+                        <p:menuitem value="Gestionar salas"  outcome="/admin/gestionSalas/salas.xhtml" rendered="#{request.isUserInRole('admin')}"/>
                         <p:menuitem value="Mis actividades"  outcome="/usuarios/misActividades.xhtml" rendered="#{request.isUserInRole('usuarios')}"/>
                         
                     </p:menu>
