@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <body>
 
@@ -20,7 +21,10 @@
                         </tr>
                         <tr>
                             <th align="left">Sala:</th>
-                            <td><p:inputText id="sala" value="#{actividadesBackingBean.actividadesSala}" required="true"/></td>
+                            <td><p:selectOneMenu id="sala" value="#{actividadesBackingBean.actividadesSala}" required="true">
+                                    <f:selectItems value="#{salasFacadeREST.findAll()}" var="s" itemLabel="#{s.nombre}" itemValue="#{s.nombre}"/>
+                                </p:selectOneMenu>
+                            </td>
                             <td><p:message for="sala"/></td>
                         </tr>
                         <tr>
