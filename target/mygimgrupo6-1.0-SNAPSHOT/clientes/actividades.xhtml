@@ -15,12 +15,15 @@
                     <h:form>
                         <h1><h:outputText value="Lista de actividades disponibles"/></h1>
                         <p:dataTable value="#{actividadesFacadeREST.findAll()}" var="item">
-                            
+
                             <p:column>
                                 <f:facet name="header">
                                     <h:outputText value="Actividad"/>
                                 </f:facet>
-                                <h:outputText value="#{item.nombre}"/>
+                                <p:commandLink update="detalles" oncomplete="PF('Actividad').show()">
+                                    <f:setPropertyActionListener value="#{item}" target="#{tablaBackingBean.actividad}"/>
+                                    <h:outputText value='#{item.nombre}'/>
+                                </p:commandLink>
                             </p:column>
                             <p:column>
                                 <f:facet name="header">
@@ -40,10 +43,40 @@
                                 </f:facet>
                                 <h:outputText value="#{item.disponibles}"/>
                             </p:column>
-                            
+
                         </p:dataTable>
                     </h:form>
                 </f:view>
+
+                <p:dialog id="Actividad" header="Información de la actividad" widgetVar="Actividad" showEffect="blind" hideEffect="Explode" resizable="false">
+                    <p:outputPanel id="detalles" style="text-align: center">
+                        <p:panelGrid  columns="2" rendered="#{not empty tablaBackingBean.actividad}">
+                            <f:facet name="header">
+                                <h:outputText value="#{tablaBackingBean.actividad.nombre}"/> 
+                            </f:facet>
+
+                            <h:outputText value="Id:" />
+                            <h:outputText value="#{tablaBackingBean.actividad.id}" />
+                            <h:outputText value="Aula:" />
+                            <h:outputText value="#{tablaBackingBean.actividad.sala}" />
+                            <h:outputText value="Fecha:" />
+                            <h:outputText value="#{tablaBackingBean.actividad.fecha}" />
+                            <h:outputText value="Hora de Inicio:" />
+                            <h:outputText value="#{tablaBackingBean.actividad.horaInicio}" />
+                            <h:outputText value="Hora de final:" />
+                            <h:outputText value="#{tablaBackingBean.actividad.horaFinal}" />
+                            <h:outputText value="Plazas disponibles:" />
+                            <h:outputText value="#{tablaBackingBean.actividad.disponibles}" />
+                            <h:outputText value="Precio:" />
+                            <h:outputText value="#{tablaBackingBean.actividad.precio}" />
+                            <h:outputText value="Contacto del profesor:" />
+                            <h:outputText value="#{tablaBackingBean.actividad.creadaPor}" />
+                            <h:outputText value="Descripcion:" />
+                            <h:outputText value="#{tablaBackingBean.actividad.descripcion}" />
+                        </p:panelGrid>
+                    </p:outputPanel>
+                </p:dialog>
+
             </ui:define>
 
         </ui:composition>
