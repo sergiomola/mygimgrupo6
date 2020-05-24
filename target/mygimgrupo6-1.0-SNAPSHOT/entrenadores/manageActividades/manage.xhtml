@@ -20,7 +20,7 @@
                         </c:forEach>
                     </p:selectOneRadio>
                     <p:commandButton value="Detalles" action="actividad"  />
-                    <p:commandButton value="Añadir Actividad" action="nuevaActividad" />
+                    <p:commandButton value="Añadir Actividad" action="nuevaActividad" actionListener="#{actividadesClientBean.set0Id}" />
                 </h:form>
             </ui:define>
 

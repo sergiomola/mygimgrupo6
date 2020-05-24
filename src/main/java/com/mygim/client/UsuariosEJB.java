@@ -6,6 +6,7 @@
 package com.mygim.client;
 
 import com.mygim.entities.Actividades;
+import com.mygim.entities.Salas;
 import com.mygim.entities.Usuarios;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -35,13 +36,18 @@ public class UsuariosEJB {
         em.createQuery("DELETE FROM ActividadesUsuario WHERE actividadId = :actividadId").setParameter("actividadId", actividadId).executeUpdate();
     }
     
-    public boolean haySuperposicion(String fecha, String horaI, String horaF, String sala){
-        List<Actividades> a = em.createQuery("SELECT a FROM Actividades a WHERE a.fecha = :fecha AND a.sala = :sala AND ((a.horaInicio < :horaI AND a.horaFinal > :horaI ) OR (a.horaFinal > :horaF AND a.horaInicio < :horaF))")
+    public boolean haySuperposicion(String fecha, String horaI, String horaF, String sala, int id){
+        List<Actividades> a = em.createQuery("SELECT a FROM Actividades a WHERE a.fecha = :fecha AND a.sala = :sala AND a.id <> :id AND ((a.horaInicio < :horaI AND a.horaFinal > :horaI ) OR (a.horaFinal > :horaF AND a.horaInicio < :horaF))")
                 .setParameter("fecha", fecha)
                 .setParameter("sala", sala)
                 .setParameter("horaI", horaI)
                 .setParameter("horaF", horaF)
+                .setParameter("id", id)
                 .getResultList();
+        System.out.println(a.size());
         return !a.isEmpty();
+    }
+    public int getAforo(String sala){
+        return em.createNamedQuery("Salas.findByNombre", Salas.class).setParameter("nombre", sala).getSingleResult().getAforo();
     }
 }

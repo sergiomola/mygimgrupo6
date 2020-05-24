@@ -11,6 +11,7 @@ import com.mygim.json.ActividadesReader;
 import com.mygim.json.ActividadesWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -109,7 +110,7 @@ public class ActividadesClientBean {
                 .request()
                 .post(Entity.entity(m, MediaType.APPLICATION_JSON));
     }
-    
+
     public void editActividad() {
         Actividades m = new Actividades();
         DateFormat d = new SimpleDateFormat("yyyy-MM-dd");
@@ -132,13 +133,11 @@ public class ActividadesClientBean {
                 .put(Entity.entity(m, MediaType.APPLICATION_JSON));
     }
 
-
     public List<Usuarios> getUsuariosRegistrados() {
         return e.getActivityUsers(bean.getActividadesId());
     }
 
-    
-    public void comprobarHoras(ComponentSystemEvent event){
+    public void comprobarHoras(ComponentSystemEvent event) {
         FacesContext facesContext = FacesContext.getCurrentInstance();
         UIComponent components = event.getComponent();
         UIInput uiInputHoraI = (UIInput) components.findComponent("horaInicio");
@@ -148,36 +147,58 @@ public class ActividadesClientBean {
         UIInput uiInputSala = (UIInput) components.findComponent("sala");
         String Sala = uiInputSala.getLocalValue() == null ? "" : uiInputSala.getLocalValue().toString();
         UIInput uiInputFecha = (UIInput) components.findComponent("fecha");
-        String Fecha = uiInputFecha.getLocalValue() == null ? "" : uiInputFecha.getLocalValue().toString();
-        
-        if(HoraI.isEmpty() || HoraF.isEmpty()){
+        Date Fecha = (Date) uiInputFecha.getLocalValue();
+        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+
+        if (HoraI.isEmpty() || HoraF.isEmpty()) {
             return;
         }
-        
-        if(HoraI.substring(0,2).compareTo("24")>=0 || HoraI.substring(3,5).compareTo("60")>=0){
+
+        if (HoraI.substring(0, 2).compareTo("24") >= 0 || HoraI.substring(3, 5).compareTo("60") >= 0) {
             FacesMessage msg = new FacesMessage("La hora introducida no es válidas");
             msg.setSeverity(FacesMessage.SEVERITY_ERROR);
             facesContext.addMessage(uiInputHoraI.getClientId(), msg);
             facesContext.renderResponse();
         }
-        
-        if(HoraF.substring(0,2).compareTo("24")>=0 || HoraF.substring(3,5).compareTo("60")>=0){
+
+        if (HoraF.substring(0, 2).compareTo("24") >= 0 || HoraF.substring(3, 5).compareTo("60") >= 0) {
             FacesMessage msg = new FacesMessage("Laa hora introducida no es válida");
             msg.setSeverity(FacesMessage.SEVERITY_ERROR);
             facesContext.addMessage(uiInputHoraF.getClientId(), msg);
             facesContext.renderResponse();
         }
-        
-        if(HoraI.compareTo(HoraF)>=0){
+
+        if (HoraI.compareTo(HoraF) >= 0) {
             FacesMessage msg = new FacesMessage("La hora inicial tiene que ser inferior a la posterior");
             msg.setSeverity(FacesMessage.SEVERITY_ERROR);
             facesContext.addMessage(uiInputHoraI.getClientId(), msg);
             facesContext.renderResponse();
         }
-        if(e.haySuperposicion(Fecha, HoraI, HoraF, Sala)){
+        System.out.println(f.format(Fecha) + HoraI + HoraF + Sala);
+        if (e.haySuperposicion(f.format(Fecha), HoraI, HoraF, Sala, bean.getActividadesId())) {
             FacesMessage msg = new FacesMessage("La sala está ocupada a esas horas");
             msg.setSeverity(FacesMessage.SEVERITY_ERROR);
             facesContext.addMessage(uiInputHoraI.getClientId(), msg);
+            facesContext.renderResponse();
+        }
+    }
+    
+    public void set0Id(){
+        bean.setActividadesId(0);
+    }
+    
+    public void comprobarAforo(ComponentSystemEvent event){
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        UIComponent components = event.getComponent();
+        UIInput uiInputSala = (UIInput) components.findComponent("sala");
+        String Sala = uiInputSala.getLocalValue() == null ? "" : uiInputSala.getLocalValue().toString();
+        UIInput uiInputDisponibles = (UIInput) components.findComponent("disponiboles");
+        int Plazas= (Integer) uiInputDisponibles.getLocalValue() ;
+        int aforo = e.getAforo(Sala);
+        if(Plazas > aforo){
+            FacesMessage msg = new FacesMessage("El aforo de la sala (" + aforo +") es menor que el numero de plazas disponibles");
+            msg.setSeverity(FacesMessage.SEVERITY_ERROR);
+            facesContext.addMessage(uiInputDisponibles.getClientId(), msg);
             facesContext.renderResponse();
         }
     }
