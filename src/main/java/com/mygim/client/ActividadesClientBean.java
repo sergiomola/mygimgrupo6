@@ -174,32 +174,50 @@ public class ActividadesClientBean {
             facesContext.addMessage(uiInputHoraI.getClientId(), msg);
             facesContext.renderResponse();
         }
-        
-        if (!e.haySuperposicion(f.format(Fecha), HoraI, HoraF, Sala, bean.getActividadesId()).isEmpty()) {
+
+        if (e.haySuperposicion(f.format(Fecha), HoraI, HoraF, Sala, bean.getActividadesId())) {
             FacesMessage msg = new FacesMessage("La sala está ocupada a esas horas");
             msg.setSeverity(FacesMessage.SEVERITY_ERROR);
             facesContext.addMessage(uiInputHoraI.getClientId(), msg);
             facesContext.renderResponse();
         }
     }
-    
-    public void set0Id(){
+
+    public void set0Id() {
         bean.setActividadesId(0);
     }
-    
-    public void comprobarAforo(ComponentSystemEvent event){
+
+    public void comprobarAforo(ComponentSystemEvent event) {
         FacesContext facesContext = FacesContext.getCurrentInstance();
         UIComponent components = event.getComponent();
         UIInput uiInputSala = (UIInput) components.findComponent("sala");
         String Sala = uiInputSala.getLocalValue() == null ? "" : uiInputSala.getLocalValue().toString();
         UIInput uiInputDisponibles = (UIInput) components.findComponent("disponibles");
-        int Plazas= (Integer) uiInputDisponibles.getLocalValue() ;
+        int Plazas = (Integer) uiInputDisponibles.getLocalValue();
         int aforo = e.getAforo(Sala);
-        if(Plazas > aforo){
-            FacesMessage msg = new FacesMessage("El aforo de la sala (" + aforo +") es menor que el numero de plazas disponibles");
+        if (Plazas > aforo) {
+            FacesMessage msg = new FacesMessage("El aforo de la sala (" + aforo + ") es menor que el numero de plazas disponibles");
             msg.setSeverity(FacesMessage.SEVERITY_ERROR);
             facesContext.addMessage(uiInputDisponibles.getClientId(), msg);
             facesContext.renderResponse();
         }
+    }
+
+    public void update(ComponentSystemEvent event) {
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        UIComponent components = event.getComponent();
+        UIInput uiInputSala = (UIInput) components.findComponent("sala");
+        String Sala = uiInputSala.getLocalValue() == null ? "" : uiInputSala.getLocalValue().toString();
+        UIInput uiInputFecha = (UIInput) components.findComponent("fecha");
+        Date Fecha = (Date) uiInputFecha.getLocalValue();
+        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+        bean.setActividadesSala(Sala);
+        bean.setActividadesFecha(Fecha);
+        
+    }
+
+    public List<Actividades> getActividadesSalaFecha() {
+        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+        return e.getActividadesFechaSala(f.format(bean.getActividadesFecha()), bean.getActividadesSala(), bean.getActividadesId());
     }
 }
