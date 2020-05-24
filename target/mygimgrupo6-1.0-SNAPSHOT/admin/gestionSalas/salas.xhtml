@@ -13,7 +13,7 @@
 
             <ui:define name="content">
                 <h1><h:outputText value="Elige la sala"/></h1>
-                <h:form>
+                <h:form id="contenido">
                     <p:selectOneRadio id="customRadio"  layout="custom" value="#{salasBackingBean.nombre}" required="true">
                         <f:selectItems value="#{salasClientBean.salas}" var="a"
                                        itemValue="#{a.nombre}"
@@ -33,7 +33,7 @@
 
                     <p:linkButton id="add" value="Añadir una nueva Sala" outcome="nuevaSala" icon="ui-icon-plus"/>
                     <p:commandButton id="edit" value="Modificar Aforo" action="editSala" icon="ui-icon-clipboard"/>
-                    <p:commandButton id="delete" value="Borrar Sala" actionListener="#{salasClientBean.deleteSalas()}" oncomplete="location.reload()" icon="ui-icon-trash"/>
+                    <p:commandButton id="delete" value="Borrar Sala" actionListener="#{salasClientBean.deleteSalas()}" update="contenido" icon="ui-icon-trash"/>
                     <p:message for="customRadio"/>
                 </h:form>
             </ui:define>

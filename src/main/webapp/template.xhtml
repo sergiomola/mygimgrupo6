@@ -16,11 +16,11 @@
         <p:layout fullPage="true">
 
 
-            <p:layoutUnit position="north" size="50" resizable="true" closable="true" collapsible="true">
+            <p:layoutUnit position="north" size="60" resizable="true" closable="true" collapsible="true">
                 <h1><h:outputText value="Gimnasio Mygim"/></h1>
             </p:layoutUnit>
-            <p:layoutUnit position="west" size="175" header="Left" collapsible="true">
-                <h:form>
+            <p:layoutUnit position="west" size="180" header="Left" collapsible="true">
+                <h:form style="width: 100%">
                     <p:menu>
                         <p:menuitem value="Inicio" outcome="/index.xhtml" icon="ui-icon-home" />
                         <p:menuitem value="Iniciar Sesión" outcome="/login.xhtml" rendered="#{request.isUserInRole('usuarios')==false}" icon="ui-icon-key"/>
@@ -28,17 +28,17 @@
                         <p:menuitem value="Mis actividades"  outcome="/clientes/misActividades.xhtml" rendered="#{request.isUserInRole('clientes')}" icon="ui-icon-calendar"/>
                         <p:menuitem value="Todas las Atividades" outcome="/clientes/actividades.xhtml" rendered="#{request.isUserInRole('clientes')}" icon="ui-icon-script"/>
                         <p:menuitem value="Reservar Actividad" action="reserva" rendered="#{request.isUserInRole('clientes')}" icon="ui-icon-cart"/>
-                        <p:menuitem value="Gestionar mis Actividades" outcome="/entrenadores/manageActividades/manage.xhtml" rendered="#{request.isUserInRole('entrenadores')}" icon="ui-icon-clipboard"/>
-                        <p:menuitem value="Gestionar entrenadores"  outcome="/admin/gestionEntrenadores/gestionarEntrenadores.xhtml" rendered="#{request.isUserInRole('admin')}" icon="ui-icon-person"/>
-                        <p:menuitem value="Gestionar salas"  outcome="/admin/gestionSalas/salas.xhtml" rendered="#{request.isUserInRole('admin')}" icon="ui-icon-wrench"/>
+                        <p:menuitem value="Gestión Actividades" outcome="/entrenadores/manageActividades/manage.xhtml" rendered="#{request.isUserInRole('entrenadores')}" icon="ui-icon-clipboard"/>
+                        <p:menuitem value="Gestión entrenadores"  outcome="/admin/gestionEntrenadores/gestionarEntrenadores.xhtml" rendered="#{request.isUserInRole('admin')}" icon="ui-icon-person"/>
+                        <p:menuitem value="Gestión salas"  outcome="/admin/gestionSalas/salas.xhtml" rendered="#{request.isUserInRole('admin')}" icon="ui-icon-wrench"/>
                         <p:menuitem value="Sala de Chat" outcome="/usuarios/chat/chatroom.xhtml" rendered="#{request.isUserInRole('usuarios')}" icon="ui-icon-comment"/>
                     </p:menu>
                 </h:form>
             </p:layoutUnit> 
-            <p:layoutUnit position="center" size="175" >
+            <p:layoutUnit position="center" size="200" >
                 <ui:insert name="content">Content</ui:insert>
             </p:layoutUnit>
-            <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true" >
+            <p:layoutUnit position="north" size="110" resizable="true" closable="true" collapsible="true" >
                 <h2><h:outputText value="Aplicación Gimnasio Mygim - Valladolid"/></h2>
                 <h:form>
                     <p:toolbar rendered="#{request.isUserInRole('usuarios')}">

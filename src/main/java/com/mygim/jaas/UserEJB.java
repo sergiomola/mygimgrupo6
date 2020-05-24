@@ -68,6 +68,10 @@ public class UserEJB {
         Query query = em.createQuery("DELETE FROM Usuarios u WHERE u.email=:email");
         query.setParameter("email", email);
         query.executeUpdate();
+        
+        query = em.createQuery("DELETE FROM GruposUsuario u WHERE u.email=:email");
+        query.setParameter("email", email);
+        query.executeUpdate();
     }
 
     public List<Usuarios> findAllEntrenadores() {

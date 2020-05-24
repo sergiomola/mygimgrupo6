@@ -51,7 +51,7 @@
                         <p:message for="disponibles"/>
 
                         <h:outputLabel for="descripcion" value="Descripcion:" style="font-weight:bold"/>
-                        <p:inputText id="descripcion" value="#{actividadesBackingBean.actividadesDescripcion}" required="true"/>
+                        <p:inputTextarea id="descripcion" value="#{actividadesBackingBean.actividadesDescripcion}" required="true" rows="6" cols="30" maxlength="200"/>
                         <p:message for="descripcion"/>
 
                     </h:panelGrid>

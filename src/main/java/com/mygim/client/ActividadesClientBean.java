@@ -155,7 +155,7 @@ public class ActividadesClientBean {
         }
 
         if (HoraI.substring(0, 2).compareTo("24") >= 0 || HoraI.substring(3, 5).compareTo("60") >= 0) {
-            FacesMessage msg = new FacesMessage("La hora introducida no es válidas");
+            FacesMessage msg = new FacesMessage("La hora introducida no es válida");
             msg.setSeverity(FacesMessage.SEVERITY_ERROR);
             facesContext.addMessage(uiInputHoraI.getClientId(), msg);
             facesContext.renderResponse();

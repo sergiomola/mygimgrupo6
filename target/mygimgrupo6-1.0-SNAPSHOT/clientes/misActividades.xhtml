@@ -4,7 +4,8 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <style type="text/css">
         .nombre {
@@ -21,56 +22,65 @@
         <ui:composition template="./../template.xhtml">
 
             <ui:define name="content">
-                
-                <p:repeat value="#{misActividadesView.actividadesPersona}" var="actividad">
-                    <h:panelGrid columns="2" style="width: 100%" columnClasses="nombre, info">
-                        <p:commandLink update="detalles" oncomplete="PF('Actividad').show()">
-                            <f:setPropertyActionListener value="#{actividad.id}" target="#{misActividadesView.id}"/>
-                            <h:outputText value='#{actividad.nombre}'/>
-                        </p:commandLink>
 
-                        <p:outputPanel>
-                            <h:panelGrid columns="4" cellpadding="5">
-                                <h:outputText value="Sala:"/>
-                                <h:outputText value="#{actividad.sala}"/>
-                                <h:outputText value="Fecha:"/>
-                                <h:outputText value="#{actividad.fecha}"/>
-                                <h:outputText value="Hora de Inicio:"/>
-                                <h:outputText value="#{actividad.horaInicio}"/>
-                                <h:outputText value="Hora de Final:"/>
-                                <h:outputText value="#{actividad.horaFinal}"/>
+                <c:choose>
+                    <c:when test="#{empty misActividadesView.actividadesPersona}">
+                        <h1> Aún no te has apuntado a ninguna actividad. Puedes hacerlo en la pestaña <b>Reservar actividad</b> del menú.</h1>
+                    </c:when>
+                    <c:otherwise>
+                        <p:repeat value="#{misActividadesView.actividadesPersona}" var="actividad">
+                            <h:panelGrid columns="2" style="width: 100%" columnClasses="nombre, info">
+                                <p:commandLink update="detalles" oncomplete="PF('Actividad').show()">
+                                    <f:setPropertyActionListener value="#{actividad.id}" target="#{misActividadesView.id}"/>
+                                    <h:outputText value='#{actividad.nombre}'/>
+                                </p:commandLink>
+
+                                <p:outputPanel>
+                                    <h:panelGrid columns="4" cellpadding="5">
+                                        <h:outputText value="Sala:" style="font-weight: bold"/>
+                                        <h:outputText value="#{actividad.sala}"/>
+                                        <h:outputText value="Fecha:" style="font-weight: bold"/>
+                                        <h:outputText value="#{actividad.fecha}"/>
+                                        <h:outputText value="Hora de Inicio:" style="font-weight: bold"/>
+                                        <h:outputText value="#{actividad.horaInicio}"/>
+                                        <h:outputText value="Hora de Final:" style="font-weight: bold"/>
+                                        <h:outputText value="#{actividad.horaFinal}"/>
+                                    </h:panelGrid>
+                                </p:outputPanel>
                             </h:panelGrid>
-                        </p:outputPanel>
-                    </h:panelGrid>
-                    <hr/>
-                </p:repeat>
+                            <hr/>
+                        </p:repeat>
 
-                <p:dialog id="Actividad" header="Información de la actividad" widgetVar="Actividad" showEffect="blind" hideEffect="Explode" resizable="false">
-                    <p:outputPanel id="detalles" style="text-align: center">
-                        <p:panelGrid  columns="2" rendered="#{not empty misActividadesView.id}">
-                            <f:facet name="header">
-                                <h:outputText value="#{misActividadesView.actividad.nombre}"/> 
-                            </f:facet>
+                        <p:dialog id="Actividad" header="Información de la actividad" widgetVar="Actividad" showEffect="blind" hideEffect="Explode" resizable="false">
+                            <p:outputPanel id="detalles" style="text-align: center">
+                                <p:panelGrid  columns="2" rendered="#{not empty misActividadesView.id}">
+                                    <f:facet name="header">
+                                        <h:outputText value="#{misActividadesView.actividad.nombre}"/> 
+                                    </f:facet>
 
-                            <h:outputText value="Id:" />
-                            <h:outputText value="#{misActividadesView.actividad.id}" />
-                            <h:outputText value="Aula:" />
-                            <h:outputText value="#{misActividadesView.actividad.sala}" />
-                            <h:outputText value="Fecha:" />
-                            <h:outputText value="#{misActividadesView.actividad.fecha}" />
-                            <h:outputText value="Hora de Inicio:" />
-                            <h:outputText value="#{misActividadesView.actividad.horaInicio}" />
-                            <h:outputText value="Hora de final:" />
-                            <h:outputText value="#{misActividadesView.actividad.horaFinal}" />
-                            <h:outputText value="Precio:" />
-                            <h:outputText value="#{misActividadesView.actividad.precio}€" />
-                            <h:outputText value="Contacto del profesor:" />
-                            <h:outputText value="#{misActividadesView.actividad.creadaPor}" />
-                            <h:outputText value="Descripcion:" />
-                            <h:outputText value="#{misActividadesView.actividad.descripcion}" />
-                        </p:panelGrid>
-                    </p:outputPanel>
-                </p:dialog>
+                                    <h:outputText value="Id:" />
+                                    <h:outputText value="#{misActividadesView.actividad.id}" />
+                                    <h:outputText value="Aula:" />
+                                    <h:outputText value="#{misActividadesView.actividad.sala}" />
+                                    <h:outputText value="Fecha:" />
+                                    <h:outputText value="#{misActividadesView.actividad.fecha}" />
+                                    <h:outputText value="Hora de Inicio:" />
+                                    <h:outputText value="#{misActividadesView.actividad.horaInicio}" />
+                                    <h:outputText value="Hora de final:" />
+                                    <h:outputText value="#{misActividadesView.actividad.horaFinal}" />
+                                    <h:outputText value="Precio:" />
+                                    <h:outputText value="#{misActividadesView.actividad.precio}€" />
+                                    <h:outputText value="Contacto del profesor:" />
+                                    <h:outputText value="#{misActividadesView.actividad.creadaPor}" />
+                                    <h:outputText value="Descripcion:" />
+                                    <h:outputText value="#{misActividadesView.actividad.descripcion}" />
+                                </p:panelGrid>
+                            </p:outputPanel>
+                        </p:dialog>
+                    </c:otherwise>
+                </c:choose>
+
+
             </ui:define>
 
         </ui:composition>

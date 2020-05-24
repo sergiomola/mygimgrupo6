@@ -14,6 +14,7 @@
                 <h1>Añadir nueva actividad</h1>
                 <h:form>
                     <f:event listener="#{actividadesClientBean.comprobarHoras}" type="postValidate"/>
+                    <f:event listener="#{actividadesClientBean.comprobarAforo}" type="postValidate"/>
                     <h:panelGrid id="grid" columns="3">
                         <h:outputLabel for="name" value="Nombre:" style="font-weight:bold"/>
                         <p:inputText id="name" value="#{actividadesBackingBean.actividadesNombre}" required="true"
@@ -50,7 +51,7 @@
                         <p:message for="disponibles"/>
 
                         <h:outputLabel for="descripcion" value="Descripcion:" style="font-weight:bold"/>
-                        <p:inputText id="descripcion" value="#{actividadesBackingBean.actividadesDescripcion}" required="true"/>
+                        <p:inputTextarea id="descripcion" value="#{actividadesBackingBean.actividadesDescripcion}" required="true" rows="6" cols="30" maxlength="200"/>
                         <p:message for="descripcion"/>
 
                     </h:panelGrid>

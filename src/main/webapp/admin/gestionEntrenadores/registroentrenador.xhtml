@@ -18,17 +18,17 @@
 
                             <h:outputLabel for="name" value="Nombre:" style="font-weight:bold"/>
                             <p:inputText id="name" value="#{registerView.nombre}" required="true"
-                                         requiredMessage="Por favor, introduce tu nombre." maxlength="30"/>
+                                         requiredMessage="Por favor, introduce el nombre." maxlength="30"/>
                             <p:message for="name"/>
 
                             <h:outputLabel for="apellidos" value="Apellidos:" style="font-weight:bold"/>
                             <p:inputText id="apellidos" value="#{registerView.apellidos}" required="true"
-                                         requiredMessage="Por favor, introduce tus apellidos." maxlength="60"/>
+                                         requiredMessage="Por favor, introduce los apellidos." maxlength="60"/>
                             <p:message for="apellidos"/>
 
                             <h:outputLabel for="dni" value="DNI:" style="font-weight:bold"/>
                             <p:inputText id="dni" value="#{registerView.dni}" required="true"
-                                         requiredMessage="Por favor, introduce tu DNI." >
+                                         requiredMessage="Por favor, introduce el DNI." >
                                 <f:validator validatorId="DNIValidador" />
                             </p:inputText>
                             <p:message for="dni"/>
@@ -40,19 +40,19 @@
 
                             <h:outputLabel for="email" value="E-Mail:" style="font-weight:bold"/>
                             <p:inputText id="email" value="#{registerView.email}" required="true"
-                                         requiredMessage="Por favor, introduce tu email.">
+                                         requiredMessage="Por favor, introduce el email.">
                                 <f:validator validatorId="emailValidator" />
                             </p:inputText>
                             <p:message for="email"/>
 
                             <h:outputLabel for="telefono" value="Telefono:" style="font-weight:bold"/>
                             <p:inputMask id="telefono" value="#{registerView.telefono}" required="true"
-                                         requiredMessage="Por favor, introduce tu telefono." mask="999999999"/>
+                                         requiredMessage="Por favor, introduce el telefono." mask="999999999"/>
                             <p:message for="telefono"/>
 
                             <h:outputLabel for="password" value="Contraseña:" style="font-weight:bold"/>
                             <p:password id="password" value="#{registerView.password}" feedback="true"
-                                        required="true" requiredMessage="Por favor, introduce tu contraseña."
+                                        required="true" requiredMessage="Por favor, introduce la contraseña."
                                         validatorMessage="La contraseña debe contener al menos un carácter en minúsculas,
                                         un caracter en mayúscula, un número y su longitud debe estar entre 6 y 20
                                         caracteres.">
@@ -63,11 +63,11 @@
                             <h:outputLabel for="confirmpassword" value="Confirmar contraseña:" style="font-weight:bold"/>
                             <p:password id="confirmpassword" feedback="true"
                                         value="#{registerView.confirmPassword}" required="true"
-                                        requiredMessage="Por favor, confirma tu contraseña."/>
+                                        requiredMessage="Por favor, confirma la contraseña."/>
                             <p:message for="confirmpassword"/>
 
                         </h:panelGrid>
-                        <p:commandButton action="#{registerView.registerEntrenador}" update="grid" value="Crear usuario" icon="uiicon-pencil"/>
+                        <p:commandButton action="#{registerView.registerEntrenador}" update="grid" value="Crear entrenador" icon="uiicon-pencil"/>
                     </p:panel>
                 </h:form>
             </ui:define>
