@@ -24,11 +24,14 @@
                         <h:outputLabel for="sala" value="Sala:" style="font-weight:bold"/>
                         <p:selectOneMenu id="sala" value="#{actividadesBackingBean.actividadesSala}" required="true">
                             <f:selectItems value="#{salasFacadeREST.findAll()}" var="s" itemLabel="#{s.nombre}" itemValue="#{s.nombre}"/>
+                            <f:event listener="#{actividadesClientBean.update}" type="postValidate"/>
                         </p:selectOneMenu>
                         <p:message for="sala"/>
 
                         <h:outputLabel for="fecha" value="Fecha:" style="font-weight:bold"/>
-                        <p:datePicker id="fecha" value="#{actividadesBackingBean.actividadesFecha}" pattern="yyyy-MM-dd" locale="es" required="true" mindate="#{actividadesBackingBean.hoy}"/>
+                        <p:datePicker id="fecha" value="#{actividadesBackingBean.actividadesFecha}" pattern="yyyy-MM-dd" locale="es" required="true" mindate="#{actividadesBackingBean.hoy}">
+                            <f:event listener="#{actividadesClientBean.update}" type="postValidate"/>
+                        </p:datePicker>
                         <p:message for="fecha"/>
 
                         <h:outputLabel for="horaInicio" value="Hora de Inicio:" style="font-weight:bold"/>
@@ -52,6 +55,7 @@
                         <p:message for="descripcion"/>
 
                     </h:panelGrid>
+                    <p:commandButton update="detalles" oncomplete="PF('Actividad').show()" value="Mostrar horarios ese dia"/>
                     <p:commandButton
                         value="Modificar"
                         action="actividad"
@@ -59,6 +63,34 @@
                         actionListener="#{actividadesClientBean.editActividad}" />
                     <p:linkButton value="Back" outcome="manage" icon="ui-icon-arrowrefresh-1-w" />
                 </h:form>
+                
+                
+                <p:dialog id="Actividad" header="Información de la actividad" widgetVar="Actividad" showEffect="blind" hideEffect="Explode" resizable="false">
+                    <p:outputPanel id="detalles" style="text-align: center">
+                        <p:dataTable rendered="#{not empty actividadesBackingBean.actividadesSala and not empty actividadesBackingBean.actividadesFecha}" value="#{actividadesClientBean.actividadesSalaFecha}" var="item">
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Actividad"/>
+                                </f:facet>
+                                <h:outputText value="#{item.nombre}"/>
+                            </p:column>
+                            
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Hora de Inicio"/>
+                                </f:facet>
+                                <h:outputText value="#{item.horaInicio}"/>
+                            </p:column>
+                            
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Hora Final"/>
+                                </f:facet>
+                                <h:outputText value="#{item.horaFinal}"/>
+                            </p:column>
+                        </p:dataTable>
+                    </p:outputPanel>
+                </p:dialog>
             </ui:define>
 
         </ui:composition>
