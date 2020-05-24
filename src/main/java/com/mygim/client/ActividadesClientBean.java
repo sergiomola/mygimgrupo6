@@ -174,8 +174,8 @@ public class ActividadesClientBean {
             facesContext.addMessage(uiInputHoraI.getClientId(), msg);
             facesContext.renderResponse();
         }
-        System.out.println(f.format(Fecha) + HoraI + HoraF + Sala);
-        if (e.haySuperposicion(f.format(Fecha), HoraI, HoraF, Sala, bean.getActividadesId())) {
+        
+        if (!e.haySuperposicion(f.format(Fecha), HoraI, HoraF, Sala, bean.getActividadesId()).isEmpty()) {
             FacesMessage msg = new FacesMessage("La sala está ocupada a esas horas");
             msg.setSeverity(FacesMessage.SEVERITY_ERROR);
             facesContext.addMessage(uiInputHoraI.getClientId(), msg);
@@ -192,7 +192,7 @@ public class ActividadesClientBean {
         UIComponent components = event.getComponent();
         UIInput uiInputSala = (UIInput) components.findComponent("sala");
         String Sala = uiInputSala.getLocalValue() == null ? "" : uiInputSala.getLocalValue().toString();
-        UIInput uiInputDisponibles = (UIInput) components.findComponent("disponiboles");
+        UIInput uiInputDisponibles = (UIInput) components.findComponent("disponibles");
         int Plazas= (Integer) uiInputDisponibles.getLocalValue() ;
         int aforo = e.getAforo(Sala);
         if(Plazas > aforo){
