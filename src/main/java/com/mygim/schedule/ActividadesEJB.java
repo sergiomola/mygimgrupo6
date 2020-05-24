@@ -6,6 +6,7 @@
 package com.mygim.schedule;
 
 import com.mygim.entities.Actividades;
+import java.time.LocalDate;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.faces.context.FacesContext;
@@ -31,7 +32,7 @@ public class ActividadesEJB {
         if(activ.isEmpty()){
             return null;
         }
-        return em.createQuery("SELECT a FROM Actividades a WHERE a.id IN :list").setParameter("list",activ).getResultList();
+        return em.createQuery("SELECT a FROM Actividades a WHERE a.id IN :list AND a.fecha > :fecha").setParameter("list",activ).setParameter("fecha", LocalDate.now().toString()).getResultList();
         
     }
     

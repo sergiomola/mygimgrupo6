@@ -14,7 +14,7 @@
                 <f:view>
                     <h:form>
                         <h1><h:outputText value="Lista de actividades disponibles"/></h1>
-                        <p:dataTable value="#{actividadesFacadeREST.findAll()}" var="item">
+                        <p:dataTable value="#{actividadesFacadeREST.findAllPosteriores()}" var="item">
 
                             <p:column>
                                 <f:facet name="header">

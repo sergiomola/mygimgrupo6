@@ -31,9 +31,9 @@
                         </c:forEach>
                     </p:panelGrid>
 
-                    <p:linkButton id="add" value="Añadir una nueva Sala" outcome="nuevaSala"/>
-                    <p:commandButton id="edit" value="Modificar Aforo" action="editSala"/>
-                    <p:commandButton id="delete" value="Borrar Sala" actionListener="#{salasClientBean.deleteSalas()}" oncomplete="location.reload()"/>
+                    <p:linkButton id="add" value="Añadir una nueva Sala" outcome="nuevaSala" icon="ui-icon-plus"/>
+                    <p:commandButton id="edit" value="Modificar Aforo" action="editSala" icon="ui-icon-clipboard"/>
+                    <p:commandButton id="delete" value="Borrar Sala" actionListener="#{salasClientBean.deleteSalas()}" oncomplete="location.reload()" icon="ui-icon-trash"/>
                     <p:message for="customRadio"/>
                 </h:form>
             </ui:define>

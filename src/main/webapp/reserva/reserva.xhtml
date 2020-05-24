@@ -15,7 +15,7 @@
                 <h1><h:outputText value="Elige la actividad"/></h1>
                 <h:form>
                     <p:selectOneRadio id="customRadio"  layout="custom" value="#{reserva.actividadId}" required="true">
-                        <f:selectItems value="#{actividadesFacadeREST.findAll()}" var="a"
+                        <f:selectItems value="#{actividadesFacadeREST.findAllPosteriores()}" var="a"
                                        itemValue="#{a.id}"
                                        itemLabel="#{a.nombre}"/>
                     </p:selectOneRadio>
@@ -27,7 +27,7 @@
                         <h:outputText value="Hora de Final" style="font-weight: bold"/>
                         <h:outputText value="Plazas" style="font-weight: bold"/>
 
-                        <c:forEach var="a" items="#{actividadesFacadeREST.findAll()}" varStatus="loop">
+                        <c:forEach var="a" items="#{actividadesFacadeREST.findAllPosteriores()}" varStatus="loop">
                             <p:radioButton for="customRadio" itemIndex="#{loop.index}"/>
                             <h:outputText value="#{a.nombre}"/>
                             <h:outputText value="#{a.fecha}"/>

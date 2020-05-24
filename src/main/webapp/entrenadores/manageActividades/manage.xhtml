@@ -19,8 +19,8 @@
                             <f:selectItem itemValue="#{m.id}" itemLabel="#{m.nombre}"/>
                         </c:forEach>
                     </p:selectOneRadio>
-                    <p:commandButton value="Detalles" action="actividad"  />
-                    <p:commandButton value="Añadir Actividad" action="nuevaActividad" actionListener="#{actividadesClientBean.set0Id}" />
+                    <p:commandButton value="Detalles" action="actividad" icon="ui-icon-pencil" />
+                    <p:commandButton value="Añadir Actividad" action="nuevaActividad" actionListener="#{actividadesClientBean.set0Id}" icon="ui-icon-plus"/>
                 </h:form>
             </ui:define>
 
