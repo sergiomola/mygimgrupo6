@@ -22,8 +22,8 @@
                             <p:message for="nombre"/>
 
                             <h:outputLabel for="aforo" value="Aforo:" style="font-weight:bold"/>
-                            <p:spinner id="aforo" value="#{salasBackingBean.aforo}" required="true"
-                                       requiredMessage="Por favor, introduce el aforo." min="1"/>
+                            <p:inputNumber id="aforo" value="#{salasBackingBean.aforo}" required="true"
+                                       requiredMessage="Por favor, introduce el aforo." decimalPlaces="0"/>
                             <p:message for="aforo"/>
 
                         </h:panelGrid>

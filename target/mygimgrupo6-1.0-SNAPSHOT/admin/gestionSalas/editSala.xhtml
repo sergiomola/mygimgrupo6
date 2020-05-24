@@ -13,13 +13,12 @@
                 <h2>Editar el aforo de la sala #{salasBackingBean.nombre}</h2>
                 <h1>Anteriormente el aforo era #{salasClientBean.sala.aforo}, por cuanto lo quieres cambiar?</h1>
                 <h:form>
-                    <table cellpadding="5" cellspacing="5">
-                        <tr>
-                            <th align="left">Aforo:</th>
-                            <td><p:spinner id="aforo" value="#{salasBackingBean.aforo}" required="true"/> </td>
-                            <td><p:message for="aforo"/></td>
-                        </tr>
-                    </table>
+                    <h:panelGrid cellpadding="5" cellspacing="5">
+                        <h:outputLabel for="aforo" value="Aforo:" style="font-weight:bold"/>
+                            <p:inputNumber id="aforo" value="#{salasBackingBean.aforo}" required="true"
+                                       requiredMessage="Por favor, introduce el aforo." decimalPlaces="0"/>
+                            <p:message for="aforo"/>
+                    </panelGrid>
                     <p:commandButton
                         value="Cambiar"
                         action="salas"

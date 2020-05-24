@@ -39,11 +39,11 @@
                         <p:message for="horaFinal"/>
 
                         <h:outputLabel for="precio" value="Precio:" style="font-weight:bold"/>
-                        <p:spinner id="precio" value="#{actividadesBackingBean.actividadesPrecio}" required="true" min="0"/>
+                        <p:inputNumber id="precio" value="#{actividadesBackingBean.actividadesPrecio}" required="true" minValue="0" decimalPlaces="0"/>
                         <p:message for="precio"/>
 
                         <h:outputLabel for="disponibles" value="Plazas Disponibles:" style="font-weight:bold"/>
-                        <p:spinner id="disponibles" value="#{actividadesBackingBean.actividadesDisponibles}" required="true" min="0"/>
+                        <p:inputNumber id="disponibles" value="#{actividadesBackingBean.actividadesDisponibles}" required="true" decimalPlaces="0" minValue="1"/>
                         <p:message for="disponibles"/>
 
                         <h:outputLabel for="descripcion" value="Descripcion:" style="font-weight:bold"/>
