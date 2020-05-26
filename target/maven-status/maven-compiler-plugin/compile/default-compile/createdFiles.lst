@@ -11,6 +11,7 @@ com\mygim\schedule\ActividadesEJB.class
 com\mygim\schedule\MisActividadesView.class
 com\mygim\client\UsuariosEJB.class
 com\mygim\json\SalasWriter.class
+com\mygim\tabla\TablaBackingBean.class
 com\mygim\json\ActividadesWriter.class
 com\mygim\json\SalasReader$1.class
 com\mygim\jaas\UserEJB.class

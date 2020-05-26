@@ -1,14 +1,46 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
 
     <body>
 
         <ui:composition template="./template.xhtml">
 
             <ui:define name="content">
-                <h1> Bienvenido a la página princial del gimnasio Mygim </h1>
+                <h1> Ya has dado el primer paso! Bienvenido a mygim </h1>
+                
+                <h:outputText style="font-weight: bold" value= "Datos de contacto:" />
+                    <br />
+                    <h:outputText value= "983 983 983" />
+                    <br />
+                    <h:outputText value= "c/ del Metoerito 12, 47999 Valladolid" />
+                    <br />
+                    <h:outputText style="font-weight: bold" value="Horario:"/>
+                    <br />
+                    <h:outputText value="Lunes a Viernes de 7.00h a 23.00h" />
+                    <br />
+                    <h:outputText value="Sábados de 9.00h a 22.00h" />
+                    <br />
+                    <h:outputText value="Domingos y Festivos de 9.00h a 20.00h"/>
+                    <br />
+                    <br />
+                    <h:outputText style="font-weight: bold" value= "CARACTERÍSTICAS"/>
+                <br />
+                <h:outputText value= "• Superficie total de instalaciones: 14.523 m2"/>
+                <br />
+                <h:outputText value="• Número de salas: 4 salas para actividades dirigidas"/>
+                <br />
+                <h:outputText value="• Piscinas: 2 interiores (vaso nado y vaso aprendizaje)  y 1 exterior"/>
+                <br />
+                <h:outputText value="• Circuito hidrotermal: spa, sauna y baño de vapor "/>
+                <br />
+                <h:outputText value="• Pistas de pádel: 2 pistas "/>
+                <br />
+                <h:outputText value="• Otros servicios: servicio de nutrición, solárium, pista multideporte exterior y parking con 240 plazas (2 horas gratis para socios)."/>
+                <br />
+                <h:graphicImage value="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Gym_Free-weights_Area.jpg/220px-Gym_Free-weights_Area.jpg"/>
             </ui:define>
 
         </ui:composition>
